@@ -37,3 +37,53 @@ https://www.linkedin.com/in/luisfernandezmunyoz
 
     1.3.5   Formas intermedias estables
             Un sistema Complejo no nace de la nada, normalmente viene de otro sistema que no era tan complejo pero por demanda, necesidad este se fue complicando para brindar mejores soluciones pero nunca nace de la nada, siempre tienen un origen en un sistema más simple
+
+2.Fundamentos del Software
+2.1 Introducción
+    Si al programar no tienes en el inconsciente que estoy haciendo una buena jerarquía, que estoy consiguiendo una buena modularidad, que estoy encapsulando lo que debo encapsular y que estoy creando buenas abstracciones,
+    en vez de eso si estas distraído con los detalles de los requisitos, la programación y solo te fijas en que logre funcionar; entonces el código de ese proyecto tiende al caos.
+    En programación orientada a objeto los módulos son las clases, con el tiempo los lenguajes lo que han buscado es crear un código más limpio y entendible.
+    "La observación general es que el principal enemigo de la fiabilidad, y tal vez de la calidad del software en general, es la complejidad". [Meyer]
+    La Ley de Conservación de la Complejidad dice que cada aplicación tiene una cantidad de complejidad que no puede ser eliminada u ocultada. [Tesler]
+        - No se trata de eliminar la complejidad sino manejarla para que quede entendible y fácil de interactuar con ella, pues siempre existirá una complejidad mínima inherente a lo que te hayan pedido.
+    Cuanto más complejo sea un sistema, más abierto está al colapso total. Gran parte de la complejidad que se tiene que dominar es la complejidad arbitraria. [Booch]
+    "El descubrimiento de un orden no es tarea fácil... sin embargo, una vez que el orden ha sido descubierto no hay dificultad alguna en reconocerlo". [Descartes]
+
+2.2 Abstracción
+    La abstracción es un "proceso mental de extracción de las características esenciales de algo, ignorando los detalles superfluos" [Booch]
+    ## Implicaciones:
+    * Una abstracción denota las características esenciales de un objeto que lo distinguen de todos los otros tipos de objetos y por lo tanto proporciona límites conceptuales nítidamente definidos, en relación con la perspectiva del espectador.
+    * Una abstracción se centra en la visión exterior de un objeto(sin meterme en sus tripas) y sirve para separar el comportamiento esencial de un objeto de su implementación.
+    * La abstracción es eminentemente subjetiva, dependiendo del interés del observador.
+    * Nos esforzamos para construir abstracciones de las entidades porque son directamente paralelos al vocabulario del dominio de un detector de problemas.
+
+2.3 Encapsulación
+    ## Definiciones:
+    * "La encapsulación es el proceso por la que se ocultan los detalles del soporte de las características esenciales de una abstracción" [Booch]
+       >> Se refiere a ocultar los detalles del soporte, (ocultar el como lo manipulas o guardas, pero sin alterar la información que le brindó a quien lo pide)
+    * La encapsulación proporciona barreras explícitas entre diferentes abstracciones y por lo tanto conduce a una clara separación de asuntos. El beneficio inmediato será la posibilidad de cambiar los soportes de las características de una abstracción sin afectar los elementos que dependan de esas características(posibilita el mantenimiento) porque no lo conocen, ni los mencionan.
+    ## Implicaciones:
+    * Existe una clara separación entre la interfaz y la implementación, todo lo que se encapsula debe quedar en la implementación(que será la estructura de datos, los algoritmos, sentencias... todo lo que tienes que hacer para llevar a cabo la abstracción que es lo que dejas público que es lo esencial que los demás necesitan saber de mi) el resto debe de estar encapsulado.
+    * Deberías definir la interfaz perfectamente bien y luego ver como lo implementas.
+    * Ninguna parte de un sistema complejo debe depender de los detalles internos de cualquier otra parte.
+
+2.4 Modularidad
+    * "La modularidad es el proceso de descomposición de un sistema en un conjunto de piezas acoplados y cohesivos" [Booch]
+    * El acoplamiento "[...] es la medida de fuerza de la asociación establecida por una conexión entre un módulo -elemento- y otro. El acoplamiento fuerte complica un sistema porque los módulos
+        son más difíciles de comprender, cambiar o corregir por sí mismos si están muy interrelacionados con otros módulos" [Booch].
+        >> Por tanto hay que minimizar las dependencias entre módulos.
+    * "La cohesión mide el grado de conectividad entre los elementos de un solo módulo." [Booch]
+        >> Por tanto, un módulo cohesivo tiene una fuerte relación entre sus métodos y sus atributos siendo fuertemente cohesiva.(métodos que usan dos o tres atributos de la propia clase).
+>> Se recomienda siempre tener los módulos(dígase clases, poco acoplados y cohesivos).
+    * La técnica de manejar la complejidad ha sido conocida desde la antigüedad: divide y vencerás.
+    * La modularidad bien hecha se dirige directamente a la complejidad inherente del software, porque con la descomposición en módulos atacamos esa complejidad que tiene el software, porque estás dividiendo a espacio de estados(no es lo mismo un programa con 100 variables globales que tener 20 módulos cada uno con 5 variables globales)
+    * Con la modularidad bien hecha ha de ser posible cambiar la implementación de unos módulos sin el conocimiento de la aplicación de otros módulos y sin afectar el comportamiento de los otros módulos.
+    * El bajo acoplamiento de un módulo se basa en la abstracción que limita su interfaz a lo esencial y en la encapsulación que oculta todos los detalles necesarios para su implementación pero innecesarios para otros módulos que se relacionen con éste.
+
+2.5 Jerarquía
+    * "Jerarquía es una clasificación u ordenamiento de las abstracciones"[Booch]
+    * La jerarquización es el proceso de estructuración por el que se produce una organización de un conjunto de elementos en grados o niveles de responsabilidad, de clasificación o de composición, ... entre otros.
+    Implicaciones:
+    * Cuando estés programando, cuando no tengas las jerarquías de composición fundamentales y las de clasificación y la implicación de unas en otras se te va el proyecto al caos, no es fácil encontrar las jerarquías.
+    * "Nuestra experiencia es que los sistemas de software complejos más exitosos son aquellos cuyos diseños incluyen explícitamente las estructuras y objetos bien diseñados y encarnan los cinco atributos de sistemas descritos en la sección anterior. [...]
+        Muy raramente nos encontramos con sistemas de software que se entregan a tiempo, que están dentro del presupuesto y que cumplen con sus requisitos, a menos que estén con estos factores en mente" [Booch]
