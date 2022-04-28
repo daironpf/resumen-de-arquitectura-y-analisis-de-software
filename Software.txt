@@ -5,38 +5,39 @@ Universidad Politécnica de Madrid
         curso 2016 - 2017
 profesor: Luis Fernández Muñoz
 https://www.linkedin.com/in/luisfernandezmunyoz
+En esta lista de cursos comprende 8 videos para una duración total de 4 horas con 22 minutos.
 
 1.Naturaleza del Software
 1.1 Definición de Software
-    "Es la información que suministra el desarrollador a la computadora para que manipule la información que suministra el usuario" [Cox]
-    Toda información que le das al sistema para que luego manipule la que brinda el usuario es un software, esto incluye programas, scripts, imágenes para ui, ficheros de configuración etc.
-    > Software es Información. por tanto tenemos que tenerla organizada.
+    * "Es la información que suministra el desarrollador a la computadora para que manipule la información que suministra el usuario" [Cox]
+    * Toda información que le das al sistema para que luego manipule la que brinda el usuario es un software, esto incluye programas, scripts, imágenes para ui, ficheros de configuración etc.
+        > Software es Información. por tanto tenemos que tenerla organizada.
 
 1.2 Definición de Sistema Complejos
-    Un Sistema es un conjunto de elementos que colaboran entre si para conseguir un objetivo entre todos ellos. Se encuentra delimitado por sus limites de espacio/temporales e influenciado por su entorno.
-    Un Sistema Complejo es aquel cuya complejidad excede la capacidad intelectual humana.
+    * Un Sistema es un conjunto de elementos que colaboran entre si para conseguir un objetivo entre todos ellos. Se encuentra delimitado por sus limites de espacio/temporales e influenciado por su entorno.
+    * Un Sistema Complejo es aquel cuya complejidad excede la capacidad intelectual humana.
 
 1.3 Atributos de Sistema Complejos
     1.3.1   Estructura jerárquica
-            El sistema complejo está compuesto de subsistemas interrelacionados que a su vez tienen sus propios subsistemas y así hasta que se alcanza algún elemento del más bajo nivel.
-            Los niveles de su jerarquía representan los diferentes niveles de abstracción cada uno construido sobre otro y cada uno comprensible por si mismo.
-            En cada nivel de abstracción, encontramos una colección de elementos que colaboran para proveer servicios a niveles superiores.
+            * El sistema complejo está compuesto de subsistemas interrelacionados que a su vez tienen sus propios subsistemas y así hasta que se alcanza algún elemento del más bajo nivel.
+            * Los niveles de su jerarquía representan los diferentes niveles de abstracción cada uno construido sobre otro y cada uno comprensible por si mismo.
+            * En cada nivel de abstracción, encontramos una colección de elementos que colaboran para proveer servicios a niveles superiores.
 
     1.3.2   Elementos primarios relativos
-            La elección de qué componentes en un sistema son primitivos es relativamente arbitraria y mayormente está a discreción del observador del sistema.
+            * La elección de qué componentes en un sistema son primitivos es relativamente arbitraria y mayormente está a discreción del observador del sistema.
 
     1.3.3   Separación de asuntos
-            Hay una clara separación de asuntos entre las partes de diferentes niveles de abstracción.
-            Hay un componente que se relaciona con otro componente en mayor o menor medida, pero si este componente (A) yo lo abro dentro del mismo encontraré una jerarquía de nuevos componentes(x,m,k) donde excepto el primitivo los otros tienen una jerarquía adentro.
-            Entonces la interrelación que existe entre los componente internos de un componente(dígase los componente x,m,k) tienen una fuerza de interconexión mucho mas fuerte que las conexiones de estos mismos componentes con otro componente que no sea los que están dentro de su mismo componente(A).
+            * Hay una clara separación de asuntos entre las partes de diferentes niveles de abstracción.
+            * Hay un componente que se relaciona con otro componente en mayor o menor medida, pero si este componente (A) yo lo abro dentro del mismo encontraré una jerarquía de nuevos componentes(x,m,k) donde excepto el primitivo los otros tienen una jerarquía adentro.
+            * Entonces la interrelación que existe entre los componente internos de un componente(dígase los componente x,m,k) tienen una fuerza de interconexión mucho mas fuerte que las conexiones de estos mismos componentes con otro componente que no sea los que están dentro de su mismo componente(A).
 
     1.3.4   Patrones comunes
-            Los sistemas complejos por muy complejos que sean, tienen un conjunto de distintos tipos de elementos y estos interaccionan con otros elementos casi siempre de la misma forma, repitiendo sistemáticamente los mismo mecanismos de comunicación(tienen patrones comunes en su forma de comunicase)
-            Ej: todas las células del cuerpo humano se nutren por ósmosis sin importar el tipo que sean(eso es un patrón común).
-                Nos comunicando hablando, por correo, en español, etc
+            * Los sistemas complejos por muy complejos que sean, tienen un conjunto de distintos tipos de elementos y estos interaccionan con otros elementos casi siempre de la misma forma, repitiendo sistemáticamente los mismo mecanismos de comunicación(tienen patrones comunes en su forma de comunicase)
+                Ej: todas las células del cuerpo humano se nutren por ósmosis sin importar el tipo que sean(eso es un patrón común).
+                    Nos comunicando hablando, por correo, en español, etc
 
     1.3.5   Formas intermedias estables
-            Un sistema Complejo no nace de la nada, normalmente viene de otro sistema que no era tan complejo pero por demanda, necesidad este se fue complicando para brindar mejores soluciones pero nunca nace de la nada, siempre tienen un origen en un sistema más simple
+            * Un sistema Complejo no nace de la nada, normalmente viene de otro sistema que no era tan complejo pero por demanda, necesidad este se fue complicando para brindar mejores soluciones pero nunca nace de la nada, siempre tienen un origen en un sistema más simple
 
 2.Fundamentos del Software
 2.1 Introducción
@@ -51,14 +52,14 @@ https://www.linkedin.com/in/luisfernandezmunyoz
 
 2.2 Abstracción
     La abstracción es un "proceso mental de extracción de las características esenciales de algo, ignorando los detalles superfluos" [Booch]
-    ## Implicaciones:
+    Implicaciones:
     * Una abstracción denota las características esenciales de un objeto que lo distinguen de todos los otros tipos de objetos y por lo tanto proporciona límites conceptuales nítidamente definidos, en relación con la perspectiva del espectador.
     * Una abstracción se centra en la visión exterior de un objeto(sin meterme en sus tripas) y sirve para separar el comportamiento esencial de un objeto de su implementación.
     * La abstracción es eminentemente subjetiva, dependiendo del interés del observador.
     * Nos esforzamos para construir abstracciones de las entidades porque son directamente paralelos al vocabulario del dominio de un detector de problemas.
 
 2.3 Encapsulación
-    ## Definiciones:
+    Definiciones:
     * "La encapsulación es el proceso por la que se ocultan los detalles del soporte de las características esenciales de una abstracción" [Booch]
        >> Se refiere a ocultar los detalles del soporte, (ocultar el como lo manipulas o guardas, pero sin alterar la información que le brindó a quien lo pide)
     * La encapsulación proporciona barreras explícitas entre diferentes abstracciones y por lo tanto conduce a una clara separación de asuntos. El beneficio inmediato será la posibilidad de cambiar los soportes de las características de una abstracción sin afectar los elementos que dependan de esas características(posibilita el mantenimiento) porque no lo conocen, ni los mencionan.
@@ -87,3 +88,31 @@ https://www.linkedin.com/in/luisfernandezmunyoz
     * Cuando estés programando, cuando no tengas las jerarquías de composición fundamentales y las de clasificación y la implicación de unas en otras se te va el proyecto al caos, no es fácil encontrar las jerarquías.
     * "Nuestra experiencia es que los sistemas de software complejos más exitosos son aquellos cuyos diseños incluyen explícitamente las estructuras y objetos bien diseñados y encarnan los cinco atributos de sistemas descritos en la sección anterior. [...]
         Muy raramente nos encontramos con sistemas de software que se entregan a tiempo, que están dentro del presupuesto y que cumplen con sus requisitos, a menos que estén con estos factores en mente" [Booch]
+
+3. Economía del Software
+3.1 Introducción
+    Cuatro variables: Costo, Tiempo, ámbito(funcionalidad/requisitos), Calidad >> todo esto en el triángulo de hierro (buscar imagen en google)
+    No hay una relación sencilla entre las cuatro variables; por ejemplo, no puedes obtener software más rápido gastando más dinero, porque todo tiene un proceso que llevarse a cabo y es paso a paso.
+3.2 Variable Ámbito:
+    * Es la más importante a tener en cuenta.
+    * Menos ámbito hace posible entregar mejor calidad(mientras el problema del cliente esté todavía resuelto). También permite entregar más rápido y barato.
+    * Los requisitos nunca están claros al principio. Los clientes no pueden decirnos exactamente lo que ellos quieren al principio.
+    * Van cambiando a medida que avanza el tiempo y el desarrollo del proyecto mientras se interactúa con el cliente y este va viendo como va quedando y se da cuenta de cosas que ni él mismo sabía que necesitaba o quería.
+    * Hay que gestionarlo semanalmente, para proporcionar a los jefes de proyecto la información de cómo vamos.
+    * Implementa siempre primero los requisitos más importante para el cliente.
+3.3 Variable Tiempo
+    * Las restricciones de controlar proyectos controlando el tiempo, generalmente vienen de fuera, de las manos del cliente.
+    * Disponer de más tiempo para la entrega puede mejorar la calidad e incrementar el ámbito.
+    * Si tu empresa todos los proyectos se llevan por calendarios y terminan en catarsis entonces cambia de empresa porque no estás trabajando para buenos jefes.
+3.4 Variable Coste
+    * Mucho dinero puede engrasar la maquinaria un poco, pero demasiado dinero pronto crea más problemas que soluciones. (un proyecto de 150 programadores es un problema mejor dividirlo en varios proyectos)
+    * Si se da a un proyecto muy poco dinero, no seremos capaces de resolver el problema del negocio del cliente.
+    * No puedes gastar solo en calidad o ámbito.
+    * No puedes empezar un proyecto con mucha gente, a medida que se avanza crece según la demanda y necesidad.
+3.5 Variable Calidad
+    * Hay una extraña relación entre calidad interna (que miden los programadores) y externa(que mide el cliente). Sacrificar temporalmente la calidad interna para reducir el tiempo de salida al mercado del producto, con la esperanza que la calidad externa no se vea muy dañada es tentador a corto plazo. Cuando te permitas hacer eso el proyecto se va a la mierda.
+    * La Calidad es ética profesional.
+    * Si lo haces bien te va a ir mejor, en menos tiempo puedes hacer más cosas.
+3.6 Variables correlacionadas
+    * La forma de hacer en este modelo del juego del desarrollo del software es que las fuerzas externas (clientes, directores de proyecto) eligen los valores de tres variables cualquiera. El equipo de desarrollo determina el valor resultante de la cuarta variable.
+    * Si estás en una empresa donde te imponen el valor de las cuatro variables, la calidad siempre desaparecerá y tú también deberías desaparecer de esa empresa cuanto antes pues cuando todo reviente por presión gran parte caerá en ti como parte del equipo de desarrollo.
