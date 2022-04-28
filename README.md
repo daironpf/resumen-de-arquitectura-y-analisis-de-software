@@ -1,4 +1,4 @@
-# resumen-de-arquitectura-y-analisis-de-software
+# Resumen de Arquitectura y Análisis de Software
 Estoy comenzando a ver todos los videos del canal en Youtube de https://github.com/¬miw-upm y como son tantos, y tengo mala memoria, me propuse hacer un resumen y aquí lo comparto, para quien le sirva, todo crédito y agradecimiento a la Universidad Politécnica de Madrid. 
 
 En este apartado resumiré lo que más necesito ahora que son los conocimientos de Arquitectura, Patrones y Diseño.
