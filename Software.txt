@@ -116,3 +116,22 @@ En esta lista de cursos comprende 8 videos para una duración total de 4 horas c
 3.6 Variables correlacionadas
     * La forma de hacer en este modelo del juego del desarrollo del software es que las fuerzas externas (clientes, directores de proyecto) eligen los valores de tres variables cualquiera. El equipo de desarrollo determina el valor resultante de la cuarta variable.
     * Si estás en una empresa donde te imponen el valor de las cuatro variables, la calidad siempre desaparecerá y tú también deberías desaparecer de esa empresa cuanto antes pues cuando todo reviente por presión gran parte caerá en ti como parte del equipo de desarrollo.
+
+4. Justificación de la Crisis del Software
+4.1 Introducción
+    * Nuestra incapacidad para dominar la complejidad desprende los resultados de los proyectos de software que llegan tarde, por encima del presupuesto y deficientes en los requisitos establecidos.
+    * El no poder dominar la complejidad del software hace que fallemos en las cuatro variables.
+    * "La complejidad del software es una propiedad esencial, no un accidente. Por esencial queremos decir que podemos dominar esta complejidad, pero nunca podemos hacer que se vaya. [...] A menudo llamamos esta condición la crisis del software... " [Brooks]
+    * Un Proyecto de Software se considera de éxito: Si solo te pasas el 50% del tiempo, 50% del presupuesto y entregas 2/3 partes de las funcionalidades.
+4.2 Causas de la Crisis del Software
+    1.  Falta de la involucración del usuario
+    2.  Requerimientos y especificaciones poco claras
+    3.  Cambio de requerimientos y especificaciones
+    4.  Poco apoyo de las gerencias involucradas
+    5.  Tecnología deficiente
+    6.  Falta de recursos
+    7.  Expectativas poco realistas
+    8.  Objetivos pocos claros
+    9.  Tiempos poco realistas
+    10. Nuevas tecnologías
+    11. Otros
