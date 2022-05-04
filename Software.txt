@@ -121,8 +121,8 @@ En esta lista de cursos comprende 8 videos para una duración total de 4 horas c
 4.1 Introducción
     * Nuestra incapacidad para dominar la complejidad desprende los resultados de los proyectos de software que llegan tarde, por encima del presupuesto y deficientes en los requisitos establecidos.
     * El no poder dominar la complejidad del software hace que fallemos en las cuatro variables.
-    * "La complejidad del software es una propiedad esencial, no un accidente. Por esencial queremos decir que podemos dominar esta complejidad, pero nunca podemos hacer que se vaya. [...] A menudo llamamos esta condición la crisis del software... " [Brooks]
-    * Un Proyecto de Software se considera de éxito: Si solo te pasas el 50% del tiempo, 50% del presupuesto y entregas 2/3 partes de las funcionalidades.
+    * "La complejidad del software es una propiedad esencial, no un accidente. Por esencial queremos decir que podemos dominar esta complejidad, pero nunca podemos hacer que se vaya. [...] A menudo llamamos a esta condición la crisis del software... " [Brooks]
+    * Un Proyecto de Software se considera de éxito: Si sólo te pasas el 50% del tiempo, 50% del presupuesto y entregas 2/3 partes de las funcionalidades.
 4.2 Causas de la Crisis del Software
     1.  Falta de la involucración del usuario
     2.  Requerimientos y especificaciones poco claras
@@ -135,3 +135,19 @@ En esta lista de cursos comprende 8 videos para una duración total de 4 horas c
     9.  Tiempos poco realistas
     10. Nuevas tecnologías
     11. Otros
+
+5. Complejidad del Software
+5.1 La complejidad del dominio del problema
+    *   Ley del Cambio Continuo: Un programa que se usa en un ámbito del mundo real, necesariamente debe cambiar o convertirse cada vez en menos útil.
+    *   Ley de la Complejidad Creciente: Debido a que los programas cambian por evolución, su estructura se convierte en más compleja a menos que se hagan esfuerzos activos para evitar este fenómeno. [Lehman y Belady]
+    -   Si no respetas la calidad del software que estás haciendo y manejando su complejidad entonces todo se va al carajo.
+5.2 Las limitaciones de la capacidad humana
+    *   El ser humano como ser biológico tiene sus propias limitaciones, tales como el máximo de piezas de información que un individuo puede comprender al mismo tiempo es del orden de siete, más o menos dos.
+    *   La velocidad de procesamiento es un factor limitante: la mente toma unos cinco segundos en aceptar una nueva pieza de información.
+5.3 La posible flexibilidad a través del software
+    *   Existen pocos estándares en la industria del software. Como resultado, el desarrollo de software sigue siendo una empresa de trabajo intensivo.
+    *   Se podrá reutilizar y tener factorías si las clases están perfectamente diseñadas, con buena abstracción, encapsulación, buena modularidad, bajo acoplamiento, alta cohesión, unas buenas jerarquías; entonces se puede ir creando una biblioteca y reutilizar partes de un proyecto para otros proyectos.
+5.4 El comportamiento de los sistemas discretos
+    *   Dentro de una aplicación grande, puede haber cientos o incluso miles de variables, así como más de un hilo de control. Toda la colección de estas variables, sus valores actuales y su dirección actual y la pila de llamadas de cada proceso dentro del sistema constituyen el estado actual de la aplicación.
+5.5 La dificultad de gestionar el proceso de desarrollo
+    *   La gran cantidad de requisitos de un sistema a veces es inevitable y nos obliga a escribir una gran cantidad de software nuevo o volver a utilizar el software existente en formas novedosas.
