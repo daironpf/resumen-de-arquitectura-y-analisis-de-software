@@ -151,3 +151,92 @@ En esta lista de cursos comprende 8 videos para una duración total de 4 horas c
     *   Dentro de una aplicación grande, puede haber cientos o incluso miles de variables, así como más de un hilo de control. Toda la colección de estas variables, sus valores actuales y su dirección actual y la pila de llamadas de cada proceso dentro del sistema constituyen el estado actual de la aplicación.
 5.5 La dificultad de gestionar el proceso de desarrollo
     *   La gran cantidad de requisitos de un sistema a veces es inevitable y nos obliga a escribir una gran cantidad de software nuevo o volver a utilizar el software existente en formas novedosas.
+
+6. Disciplinas del Software
+6.1 Introducción
+    *   Ingeniería de software es la aplicación práctica del conocimiento científico al diseño y construcción de programas de computadora y a la documentación asociada requerida para desarrollar, operar y mantenerlos. Se conoce también como desarrollo de software o producción de software [Bohem, 1976].
+    *   El software es sagrado [Booch] [... y requiere de un ritual] a ese ritual le llamamos requisitos, análisis y diseño.
+
+6.2 Disciplina de Requisitos
+    *   Los Requisitos es lo que hay que hacer para dirigir el desarrollo hacia el sistema correcto(que el software haga lo correcto)
+    *   La disciplina de requisitos es el flujo de trabajo, incluyendo actividades, trabajadores y documentos, cuyo propósito principal es dirigir el desarrollo hacia el sistema correcto al describir los requisitos del sistema así que pueda alcanzarse un acuerdo entre los clientes, usuarios y desarrolladores sobre lo que el sistema debería hacer:
+        >   Establecer y mantener el acuerdo entre los clientes y otros interesados (stakeholders - gerencia, marketing, usuarios sobre lo que el sistema debería hacer).
+        >   Proveer a los desarrolladores del sistema con una mejor comprensión de los requisitos del sistema.
+        >   Definir los límites del sistema.
+        >   Proveer las bases para planificar los aspectos técnicos del ambiente de desarrollo.
+        >   Proveer las bases para estimar los costes y tiempos para desarrollar el sistema.
+        >   Establecer los límites del software y hacérselo conocer al cliente, el jefe del proyecto tiene que establecer bien los límites del software y tenerlo por escrito como acuerdo con el cliente para que luego no se coma un problema enorme con el cliente cuando este quiera algo que está fuera de los límites.
+6.3 Disciplina de Análisis
+    *   Es el QUE voy a hacer !!
+    *   Es un diseño superficial que no contempla absolutamente nada de tecnología
+    *   Es una propuesta inicial
+    *   Es el flujo de trabajo, incluyendo trabajadores, actividades y documentos, cuyo principal objetivo es analizar los requisitos, una descripción de los requisitos que es fácil de mantener y ayuda a estructurar el sistema:
+        >   Dar una especificación más precisa de los requisitos obtenidos en la captura de requisitos.
+        >   Estructurar los requisitos de manera que facilite su comprensión cambiandolos y, en general, mantenerlos.
+
+6.33: Comparativa entre requisitos y análisis:
+    Requisitos:                                                     |  Análisis:
+    Descrito usando el lenguaje del cliente                         |  Descrito usando el lenguaje de los desarrolladores
+    Visión externa del sistema                                      |  Visión interna del sistema
+    Estructurado por requisitos, da estructura a la vista externa   |  Estructurado por clases estereotipadas y
+    Usado como contrato entre los clientes y los desarrolladores    |  Usado principalmente por desarrolladores para comprender qué funciones debería tener el sistema
+    Contiene muchas redundancias, inconsistencias y ambigüedades    |  No debería contener redundancias, inconsistencias, ... entre los requisitos
+
+6.4 Disciplina de Diseño
+    *   Es el CÓMO lo voy a hacer !!
+    *   Diseño es decidir cómo lo vamos a programar sin haberlo programado, escoger las estructuras de datos, escoger las clases oportunas, establecer las relaciones de las clases, establecer todo de cómo quiero que sea el código en mi software.
+    *   La disciplina de diseño es el flujo de trabajo, incluyendo actividades, trabajadores y documentos, cuyo principal propósito es desarrollar enfocados en los requisitos no funcionales y en el dominio de la solución para preparar la implementación y pruebas del sistema:
+        * Adquirir una comprensión profunda sobre los aspectos de los requisitos no funcionales y limitaciones relacionadas con:
+          > los lenguajes de programación
+          > la reutilización de componentes
+          > sistemas operativos
+          > tecnologías de distribución y concurrencia
+          > tecnologías de bases de datos
+          > tecnologías de interfaz de usuario
+          > tecnologías de gestión de transacciones
+    *   Con un diseño ya puedes repartir adecuadamente el trabajo en tu equipo de desarrolladores
+    *   Permite visualizar el software, puedes tener mapas de la arquitectura del software en las paredes (totalmente necesario).
+
+6.44 Comparativa entre análisis y diseño:
+    Análisis:                                                                                       |   Diseño:
+    Modelo conceptual porque es una abstracción del sistema y evita cuestiones de implementación    |   Modelo físico porque es un esbozo de la implementación
+    Menos formal                                                                                    |   Más formal
+    Diseño genérico, aplicable a varios diseños concretos                                           |   No es genérico, es el que se está proponiendo más específicamente para la implementación de este proyecto
+    Tres estereotipos conceptuales en las clases: modelo, vista, controlador                        |   Cualquier número de estereotipos físicos de clases dependendiendo del lenguaje
+    Menos costoso para el desarrollo (1:5 frente al diseño)                                         |   Más costoso para el desarrollo (5:1 frente al análisis)
+    Pocas capas arquitectónicas                                                                     |   Muchas capas arquitectónicas
+    Puede no ser mantenido a través de todo el ciclo de vida del software(a no ser que sea enorme)  |   Debería ser mantenido a través de todo el ciclo de vida del software
+    Principalmente creado en trabajo de campo, talleres y similares                                 |   Principalmente creado "programación visual"
+    Enfatiza la investigación del problema y sus requisitos                                         |   Enfatiza en la solución conceptual que cualquier requisitos más que la implementación
+    Haz lo correcto(has un software que cumpla con los requisitos del cliente)                      |   Hazlo correctamente(un software bien diseñado y bien hecho)
+
+6.5 Disciplina de Programación
+    *   Es implementar el sistema en términos de componentes, a programar y programar(implementación de todos los códigos)
+
+6.6 Disciplina de Pruebas
+    *   Es comprobar el resultado de la implementación al probar cada versión, incluyendo internas e intermedias, y versiones finales del sistema a entregar:
+    *   Encontrar y documentar los fallos, hacer todo tipo de pruebas
+    *   Validar que el software trabaje como fue diseñado
+    *   Validar que los requisitos son implementados apropiadamente
+
+6.7 Ecosistema de Desarrollo
+    *   El ecosistema es un conjunto de servicios integrados orientados al desarrollo de software y su objetivo es mejorar la coordinación y el trabajo realizado por el equipo de desarrollo.
+    *   La complejidad del software justifica la necesidad de herramientas que aceleren su producción, controlen su calidad y monitorizan su gestión a lo largo de todas las disciplinas de la ingeniería del software.
+    *   Para la disciplina de análisis y diseño se requiere de una herramienta CASE que facilite la edición de diagramas de análisis y diseño (diagramas de casos de uso, clases, objetos, paquetes, secuencia, colaboración, estados y actividades, implementación y despliegue)
+    *   se requiere una herramienta de métricas del software que determine automáticamente el grado de bondad de los componentes de la arquitectura del software: SonarQube
+    *   para programar se requiere de un IDE en mi caso uso IntelliJ IDEA de JetBrain
+    *   se requiere herramientas para complir las reglas de estilo (Sonarqube)
+    *   un ide con refactorización del código (renombrado de identificadores, nombrar constantes, mover métodos, ...)
+    *   un registro de los, trazas, depuración, errores. Log4j
+    *   un sistema de control de versiones. GitHub
+    *   para las pruebas donde se facilite la edición, ejecución, evaluación, testing. Junit, Selenium, ...
+    *   disciplina de pruebas se requiere de un sistema de integración continua para comprobar que el código y las pruebas funcionan tras cualquier cambio: Travis
+    *   Para el despliegue se requiere un gestor de proyectos para la automatización como el: Maven.
+    *   Una herramienta para la gestión de tickets para gestionar el proyecto, Tickets de GitHub.
+
+6.8 Conclusiones
+    Con todo lo anteriormente mencionado se intenta mitigar los problemas mencionados anteriormente en otro punto.
+    Antes de ponerse a programar siempre se hace el análisis y el diseño para saber que programar e ir eliminando los problemas del software.
+    Con estos pasos estamos llegando a grandes pasos a la reusabilidad de diseño y patrones para la implementación de otros proyectos
+    Ante el problema de los sistemas distintos, hacemos pruebas e integración continua.
+    Se crearon las metodologías para lidiar con todo esto.
