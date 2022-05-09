@@ -240,3 +240,133 @@ En esta lista de cursos comprende 8 videos para una duración total de 4 horas c
     Con estos pasos estamos llegando a grandes pasos a la reusabilidad de diseño y patrones para la implementación de otros proyectos
     Ante el problema de los sistemas distintos, hacemos pruebas e integración continua.
     Se crearon las metodologías para lidiar con todo esto.
+
+7.  Calidad del Software
+7.1 Calidad del Software
+    Todo el tiempo se está hablando de odontología profesional -> de hacerlo bien, lo cual incluye dinero, toda su gestión y calidad al final significa grandes cantidades de dinero en la empresa.
+    7.1.1   Factores de la Calidad del Software:
+        *   Corrección: Hace lo que se le pide?
+        *   Fiabilidad: Lo hace de forma fiable todo el tiempo?
+        *   Eficiencia: Qué recursos hardware y software necesito ?
+        *   Integridad: Puedo controlar su uso ?
+        *   Usabilidad: Es fácil y cómodo de manejar ?
+        *   Facilidad de mantenimiento: Puedo localizar los fallos ?
+        *   Flexibilidad: Puedo añadir nuevas opciones ?
+        *   Facilidad de prueba: Puedo probar todas las opciones ?
+        *   Portabilidad: Podré usarlo en otra máquina ?
+        *   Reusabilidad: Podré utilizar alguna parte del software en otra aplicación ?
+        *   Inter-operatividad: Podrá comunicarse con otras aplicaciones de sistemas informáticos ?
+
+    7.1.2   El diseño de software orientado a objetos es difícil, y el diseño de software orientado a objetos reutilizable es aún más difícil [...] Su diseño debe ser específico para el problema en cuestión, pero también suficiente para abordar los problemas y las necesidades futuras en general, También quiere evitar rediseñar, o al menos minimizarlo [Gamma et al].
+        *   Determinar objetos y clases con responsabilidades correctamente.
+        *   Determinar el interfaz correcto de cada clase.
+        *   Determinar la granularidad de métodos, clases y paquetes.
+        *   Determinar las jerarquías de herencia.
+        *   Determinar las dependencias entre clases y paquetes.
+    7.1.3   Signos de un Mal Diseño
+        A   Rigidez vs Flexibilidad, para la adaptación al cambio.
+        B   Fragilidad vs Robustez, sin propagación de errores.
+        C   Viscosidad vs Claridad, para la legibilidad.
+        D   Inmovilidad vs Movilidad, para la reusabilidad.
+
+    A- Rigidez: es la tendencia del software que es difícil de cambiar, incluso en formas simples. Cada cambio provoca una cascada de cambios posteriores en los módulos dependientes. Lo que comienza como un simple cambio de dos días a un módulo se convierte en un maratón de varias semanas de cambios en el módulo después de otros módulos según los ingenieros persiguen el hilo del cambio a través de la aplicación.
+        Cuando el software se comporta de esta manera, los gerentes temen que permitirá a los ingenieros no solucionar problemas críticos y la resistencia se deriva del hecho de que ellos no saben, con suficiente confiabilidad cuando terminarán.
+        Pueden llegar a ser los miedos del gerente tan agudos que este se niegue a permitir cambios en el software, la rigidez oficial se instalará tanto; lo que comienza como una deficiencia de diseño, terminará siendo una política de gestión adversa.
+    B- Fragilidad: Está en estrecha relación con la rigidez. Es la tendencia del software para estropearse en muchos lugares cada vez que se cambia. A menudo, el error se produce en las zonas que no tienen ninguna relación conceptual con el área que se ha cambiado.
+        Según empeora la fragilidad, la probabilidad de error aumenta con el tiempo, asintóticamente acercándose a 1. Este tipo de software es imposible de mantener. Cada solución hace que sea peor, llegando a la introducción de más problemas que soluciones.
+        Tales errores hacen que los clientes o la empresa sospechen que los desarrolladores han perdido el control de su software. La desconfianza reina y la credibilidad se pierde.
+    C- Viscosidad: viene en dos formas: viscosidad del diseño, y la viscosidad del entorno.
+        La viscosidad del diseño: se produce cuando nos enfrentamos a un cambio, los ingenieros suelen encontrar más de una manera de hacer el cambio. Algunas de las formas conservan el diseño, otras no lo hacen, es decir, son atajos.
+            Cuando preservar el diseño es más difícil que emplear los atajos, a continuación, la viscosidad del diseño es alta. Es fácil de hacer las cosas mal, pero difícil de hacer lo correcto.
+        La viscosidad del entorno: se produce cuando el entorno de desarrollo es lento e ineficiente. Por ejemplo, si los tiempos de compilación son muy largos, los ingenieros tendrán la tendencia a hacer cambios que no obliguen a grandes re-compilaciones pero estos cambios no son óptimos desde el punto de vista del diseño.
+            Si no rompes los ciclos y estos están por todos lados en el código entonces el tiempo de compilación es enorme. Con un buen diseño de clases tienes que romper estos ciclos y así optimizar el diseño.
+    D- Inmovilidad: es la imposibilidad de volver a utilizar el software de otros proyectos o de parte del mismo proyecto.
+        A menudo sucede que un ingeniero descubre que necesita un módulo que es similar a uno que escribió otro ingeniero. Sin embargo, también sucede a menudo que el módulo en cuestión tiene demasiado equipaje del que depende.
+        Después de mucho trabajo, los ingenieros descubren que el trabajo y el riesgo requerido para separar las partes deseables no son deseables. el software es simplemente reescrito en lugar de reutilizarlo.
+
+    Causas o motivos de un Mal Diseño:
+        Cambio de los requisitos(Ley del Cambio Continuo [Lehman y Belady])
+          * Requisitos
+            Los requisitos han ido cambiando de forma que el diseño inicial no anticipó. A menudo estos cambios deben hacerse rápidamente, y pueden ser hechos por los ingenieros que no están familiarizados con la filosofía de diseño original. Así que, aunque el cambio en el diseño funciona, viola de alguna manera el diseño original.
+                Poco a poco, a medida que los cambios siguen ocurriendo, estas violaciones se acumulan hasta que la podredumbre se asienta. Ley de Complejidad Creciente [Lehman y Belady]
+            Sin embargo, no podemos culpar a la deriva de los requisitos por la degradación del diseño. Nosotros como ingenieros de software, sabemos muy bien que las necesidades cambian. De hecho, la mayoría de nosotros nos damos cuenta de que el documento de requisitos es el documento más volátil en el proyecto.
+                Si nuestros diseños están fallando debido a la lluvia constante de cambios en los requisitos, son nuestros diseños los que están fallando.
+                Tenemos que encontrar alguna manera de hacer nuestros diseños resistentes a tales cambios, protegerlos de la descomposición(putrefacta).
+                Tenemos que crear un diseño de software que tenga fuerza y se mantenga cuando cambien los requisitos.
+          * Mala Gestión de Dependencias
+                Los cambios que introducen dependencias nuevas y no planificadas.
+                Las Dependencias son: cuando un pedazo del software depende de otro cacho de software; porque lo menciona o lo llama, uno depende del otro.
+                    entonces una clase depende de otra porque tiene objetos de esas clases como atributos o como locales o como parámetros, y les lanzo mensajes a esos objetos que están en esas clases de las que yo dependo.
+                Con el fin de evitar la degradación de la arquitectura de dependencias, las dependencias entre módulos en una aplicación deben ser gestionadas.
+                    Esta gestión consiste en la creación de un cortafuegos de dependencias. por Cortafuegos de dependencias entiéndase interfaces que hacen que una clase no conozca a otras clases sino a una interfaz,
+                        de tal manera que yo pueda cambiar la clase y si respeto la interfaz entonces a la otra no le afecta.
+
+7.2 Calidad del Software de Bajo Nivel
+    Código sucio(Smell Code - código maloliente, hediondez del código) de Beck, K. y Fowler, M. en 1999.
+    Código Limpio(Clean Code) de Martin, R. en 2008
+        El código limpio se puede leer y mejorar por un desarrollador que no sea su autor original.
+        Tiene pruebas de unidad y de aceptación.
+        Tiene nombres significativos
+        Proporciona una forma en lugar de muchas maneras para hacer una cosa.
+        Tiene dependencias mínimas, que se definen explícitamente, y proporciona una API clara y mínima.
+        El código se debe saber leer y escribir ya que dependiendo del lenguaje, no toda la información necesaria se puede expresar con claridad en el código solo.
+    El Código limpio es simple y directo.
+    Código limpio se lee como una buena prosa escrita.
+    Código limpio nunca oscurece la intención del diseñador, sino que está lleno de abstracciones nítidas.
+    Reglas positivas (Clean Code) y reglas negativas (Smell Code).
+
+7.3 Calidad del Software de Medio Nivel
+    Patrones Generales de Software para Asignación de Responsabilidades(GRASP - General Responsability Assignment Software Patterns / captar) de Larman, C. en 2005:
+    * Patrón Experto en información
+    * Patrón Alta cohesión
+    * Patrón Bajo acoplamiento
+    * Patrón Controlador
+    * Patrón Creador
+    * Patrón Polimorfismo
+    * Patrón Fabricación pura
+    * Patrón Indirección
+    * Patrón Variaciones Protegidas
+
+    Principios de Diseño Orientado a Objetos (SOLID) por Martin, R. en 1995
+    * Principio de Única Responsabilidad (SRP - The Single Responsibility Principle)
+    * Principio Abierto/Cerrado (OCP - The Open Closed Principle)
+    * Principio de Sustitución de Liskov (LSP - The Liskov Substitution Principle)
+    * Principio de Separación de Interfaces (ISP - The Interface Segregation Principle)
+    * Principio de Inversión de Dependencias (DIP - The Dependency Inversion Principle)
+
+    Patrones de Diseño por Gamma et al en 1994: Design Patterns Elements of Reusable Object-Oriented Software (autores la banda de los cuatros)
+       Patrones: Es reutilizar diseño para problemas en concreto que suceden de forma recurrente en el futuro.
+    Antipatrones: es un patrón que se cree que es bueno pero a la larga es malo(copy - paste, copiar código)
+
+7.4 Calidad del Software de Alto Nivel
+    Arquitectura del Software es el conjunto de decisiones significativas sobre la organización del sistema software, la selección de elementos estructurales en los que el sistema está compuesto y las interfaces entre ellos, junto con sus comportamientos especificados como colaboraciones de estos elementos, la composición de estos elementos estructurales y de comportamiento en subsistemas más grandes progresivamente [Booch, G]
+    Para tener arquitectura del software tienes que tener todo lo relacionado con una lógica en diferentes paquetes y hacerles flechas de dependencias donde indiques que paquetes dependen de otros y romper todos los ciclos existentes en el sistema
+    Si no tienes una arquitectura definida despídete a ti mismo pues es una mierda lo que haces.
+
+    Estilo Arquitectónico: te pauta como organizar todo tu software, el más famoso es el MVC
+    * Restricciones no funcionales (rendimiento, plataforma, ...)
+    * Tecnologías (protocolos, bases de datos, ...)
+    * Reusabilidad (diccionarios de datos, API 's, ...)
+    * Economía (sistemas heredados, frameworks, ...)
+    * Compromisos de uso (disponibilidad, amigabilidad, ...)
+    * Flexibilidad al cambio (patrones de software, cortafuegos, ...)
+    * y aspectos estéticos (C2, CMMI, ...)
+
+    Principios de Paquetes de Martin, R. en 1996 establece:
+    * Principio de Equivalencia entre Entrega y Reusabilidad
+    * Principio del Cierre Común
+    * Principio de la Reusabilidad Común
+    * Principio de Dependencias Acíclicas
+    * Principio de Dependencias Estables
+    * Principio de Abstracciones Estables
+
+7.5 Métricas de Calidad del Software
+    Una aplicación práctica de las métricas orientadas a objetos (OO), es predecir qué clases tienen una alta probabilidad de contener defectos.
+
+7.6 Reusabilidad del Software
+    Se está tratando de equilibrar la falta de la reusabilidad del código por la reusabilidad del diseño.
+    Ejemplo de reusabilidad del código y diseño son los frameworks
+
+7.7 Conclusiones
+    en positivos con patrones y negativos antipatrones
+    en positivo es código limpio y en negativo es código sucio
