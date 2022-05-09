@@ -370,3 +370,75 @@ En esta lista de cursos comprende 8 videos para una duración total de 4 horas c
 7.7 Conclusiones
     en positivos con patrones y negativos antipatrones
     en positivo es código limpio y en negativo es código sucio
+
+8. Metodologías de Desarrollo del Software
+Proceso de Desarrollo del Software: el conjunto total de actividades necesarias para transformar los requerimientos del cliente en un conjunto consistente de artefactos que representan un producto software y, en un momento posterior, para transformar los cambios de estos requerimientos en una nueva versión del producto software.
+* La diferencia entre unas metodologías y otras radica en el orden, grado y técnicas en que se acometen las actividades de las disciplinas de la ingeniería del software.
+
+8.1 Metodología en Cascada
+    La versión original fue propuesta por Royce, W. W. en 1970 y posteriormente revisada por Boehm, B en 1980 y Sommerville, I. en 1985.
+    Contiene varias etapas y el inicio de cada etapa debe esperar a la finalización de la etapa anterior. Ante la detección de un error en una etapa se regresa para atrás.
+    A no ser que la aplicación sea pequeña y bien conocida su lógica entonces no se debe usar.
+    Ventajas:
+    *   Son modelos fáciles de implementar y entender. Son modelos conocidos y utilizados con frecuencia.
+    *   Promueven una metodología de trabajo efectiva: definir antes que diseñar, diseñar antes que codificar.
+    *   Si el 90% o más de los requisitos de tu sistema se espera que sean estables a lo largo de la vida del proyecto, entonces aplicar una política dirigida por los requisitos es una oportunidad apropiada de dar razonablemente una solución óptima. [Booch ]
+    Desventajas:
+    *   Cualquier error de diseño detectado en la etapa de prueba lleva necesariamente el rediseño y nueva programación del código afectado, aumentando los costos del desarrollo.
+
+8.2 Metodología Iterativas e Incrementales
+    Iteración: Un conjunto distinto de actividades llevado a cabo de acuerdo con un plan dedicado (iteración) y criterios de evaluación que se traduce en una entrega, ya sea interna o externa.
+        *   En cada iteración se planifica un poco, se requisita un poco, se analiza un poco,  se diseña un poco, se programa un poco, se prueba un poco y se entrega lo que tienes.
+    Incremento: Una parte del sistema pequeña y manejable, por lo general, la diferencia entre dos construcciones sucesivas.
+    *   Cada iteración se traducirá en al menos una nueva construcción y, por lo tanto, se añadirá un incremento en el sistema.
+    Planificar un poco. Especificar, diseñar e implementar un poco. Integrar, probar y ejecutar un poco en cada iteración. [Booch]
+    Entrega: Un conjunto de artefactos(documentos y posiblemente una construcción ejecutable) relativamente completa y consistente entregada a usuarios externos o internos.
+        *   Entrega Interna: Una entrega no expuesta a los clientes y usuarios pero sí internamente solo para el proyecto y sus miembros.
+        *   Entrega Externa: Un entrega expuesta a clientes y usuarios externos al proyecto y sus miembros.
+    Desventajas:
+    *   Dificultad para gestionar a los miembros del equipo de desarrollo en una iteración cerrada o dificultad para gestionar a los miembros del equipo de desarrollo con varias iteraciones abiertas en paralelo.
+    Ventajas:
+    *   Permite la participación del usuario desde fechas tempranas del proyecto para corregir las desviaciones de sus necesidades.
+    *   Permite elevar el ánimo del equipo de desarrollo con las empresas externas que superan las pruebas de aceptación.
+    *   Errores de programación, diseño, ... se localizan con facilidad incremento producido en la iteración vigente.
+
+8.3 Metodología RUP vs Scrum+XP
+    RUP(Rational Unified Process):
+    DO {
+        *   Requisitar
+        *   Analizar
+        *   Diseñar
+        *   Programar
+        *   Probar
+        *   Desplegar
+    } WHILE (finProyecto)
+    En cada iteración no se pone el mismo esfuerzo a algo que en otras iteraciones.
+        *   En las primeras iteraciones se requisita mucho, se analiza y se diseña un poco, se programa muy poquito, se despliega nada
+        *   Luego en las siguientes se sigue requisitando pero menos, se analiza y se diseña mucho, se comienza a programar mucho, se va probando
+        *   Luego casi no se requisita, se analiza y se diseña pero poco, se programa full, se prueba
+
+    Scrum+XP(eXtreming programming):
+    DO {
+        *   Requisitar - Analizar   (Sprint Planning Meeting)
+        *   Probar - Diseñar            Test Driven Development (Refactoring)
+        *   Programar - Rediseñar       Test Driven Development (Refactoring)
+        *   Desplegar   Continuous   (Integration)
+     } WHILE (finProyecto)
+    Requisitar(10% del proyecto):
+    >> XP: Sprint Planning Meeting, todos se ponen de pie y escuchan la historia del usuario, lo anotan en una cartulina junto con una conversación. no documentan pero es lo mismo que los diagramas de clases, todas las personas que trabajan en el proyecto están escuchando al cliente lo que tiene que decir.
+    >> RUP: Requisita uno o dos con el cliente, cuando ya tenga la idea de todo le cuenta el resultado al analista que le interesa solamente.
+
+    TDD(Test Driven Development):
+    >> XP: Programan, Diseñan y Prueban a la vez, cuando haces TDD escribes las pruebas y al escribirlas estas poniendo el nombre de las clases y los mensajes que le vas a lanzar al código que aún no existe.
+            * obligatorio se hacen Pruebas que diseñan cómo será el código de producción, y luego programan el código de producción, lo programan mal ya que en dicha iteración solo les importa que funcione, y en una siguiente iteración se refactoriza y se le meterá la calidad.
+            Te pasas el día rediseñando.
+    >> RUP: haz lo que quieras.
+
+    RUP:                                                                            | Scrum+XP:
+    Gestión de documentación de requisitos, análisis y diseño; pesadas              | Poca documentación porque la mejor documentación es el código: ligeras
+    Con estimaciones del tiempo y coste del proyecto entero                         | Sin estimaciones del tiempo ni coste del proyecto entero
+    Planificación a largo plazo y revisiones del plan en cada iteración             | Planificación de la iteración actual pero sin previsión a largo plazo
+    Entrevistas con el cliente durante las primeras iteraciones y en cada entrega   | Entrevistas con el cliente durante todo el proyecto (el cliente tiene que estas disponible las 8 horas)
+    Desarrollo priorizado por riesgos técnicos(lo que más miedo te de hasta encontrar una buena arquitectura que con pruebas demuestre que la calidad es buena)      | Desarrollo priorizado por el cliente, es el cliente el que decide que quiere primero y que quiere después.
+    Roles especializados por desarrollador                                          | Desarrolladores multidisciplinarios
+    Diseñamos la Arquitectura                                                       | La Arquitectura emerge de todo el TDD hecho a lo largo del proyecto
