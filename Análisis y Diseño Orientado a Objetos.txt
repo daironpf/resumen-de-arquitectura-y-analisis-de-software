@@ -4,4 +4,11 @@ Universidad Politécnica de Madrid
         curso 2016 - 2017
 profesor: Luis Fernández Muñoz
 https://www.linkedin.com/in/luisfernandezmunyoz
-En esta lista de cursos comprende 8 videos para una duración total de 4 horas con 22 minutos.
+url del curso: https://www.youtube.com/playlist?list=PLj2IVmcP-_QNVN3PM5a7B6A5lVmQc_Sqg
+Este Curso se desarrollará todo el tiempo analizando el código de un juego de Tic Tac Toe (tres en línea) y a medida que avancen las clases aplicando todo lo conocido por el profesor el proyecto va cogiendo forma.
+El curso es un Guión Práctico de Análisis y Diseño mientras se avanza en la restructuración del proyecto arreglando el código a la brava y sin criterio.(no es refactoring)
+Introducción:
+Si usaran montones de patrones y conceptos de diseño para cotejar el código y montarlo como tiene que ser y un resumen de Métricas de lo que se considera bien hecho, métrica sin pudor.
+En el proyecto se parte de un código horroroso y se va arreglando aplicando el análisis y diseño hasta llegar a sólido.
+Se encontrará un montón de smell code(códigos malolientes)
+El Tic Tac Toe será para dos usuarios que alternativamente ponen y mueven fichas hasta alcanzar el objetivo de tres en raya y luego que la máquina juegue aleatoriamente sin inteligencia artificial. al final la arquitectura nos queda como un MVP.
