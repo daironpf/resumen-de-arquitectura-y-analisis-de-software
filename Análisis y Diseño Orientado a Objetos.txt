@@ -5,6 +5,8 @@ Universidad Politécnica de Madrid
 profesor: Luis Fernández Muñoz
 https://www.linkedin.com/in/luisfernandezmunyoz
 url del curso: https://www.youtube.com/playlist?list=PLj2IVmcP-_QNVN3PM5a7B6A5lVmQc_Sqg
+Los videos están muy buenos, el profesor es genial en su forma de enseñar jjaajajja, increíblemente entendible a lo directo.
+
 Este Curso se desarrollará todo el tiempo analizando el código de un juego de Tic Tac Toe (tres en línea) y a medida que avancen las clases aplicando todo lo conocido por el profesor el proyecto va cogiendo forma.
 El curso es un Guión Práctico de Análisis y Diseño mientras se avanza en la restructuración del proyecto arreglando el código a la brava y sin criterio.(no es refactoring)
 Introducción:
@@ -12,3 +14,529 @@ Si usaran montones de patrones y conceptos de diseño para cotejar el código y 
 En el proyecto se parte de un código horroroso y se va arreglando aplicando el análisis y diseño hasta llegar a sólido.
 Se encontrará un montón de smell code(códigos malolientes)
 El Tic Tac Toe será para dos usuarios que alternativamente ponen y mueven fichas hasta alcanzar el objetivo de tres en raya y luego que la máquina juegue aleatoriamente sin inteligencia artificial. al final la arquitectura nos queda como un MVP.
+
+1   Formato de Código Limpio
+Justificación:
+    Formateo de código es importante. Es demasiado importante como para ignorarlo y es demasiado importante como para tratarlo religiosamente. El formateo de código trata sobre la comunicación y la comunicación es de primer orden para los desarrolladores profesionales.
+    Tú eres irrelevante, lo que es relevante es que haya un formato común, eso es lo importante, nunca tu criterio o gusto, programar es una ingeniería no una pastelería donde haces cakes a tu gusto.
+Implicaciones:
+    Une línea entre grupos lógicos (atributos y cada método)
+    Los atributos deben declararse al principio de la clase
+    Las funciones dependientes en que una llama a otra, deberían estar verticalmente cerca: primero la llamante y luego la llamada (no una que llame a otra en la misma clase y la llamada se encuentre en cualquier sitio y haya que salir a buscarla)
+    Grupos de funciones que realizan operaciones parecidas, deberían permanecer juntas (los métodos agruparlos por cierta naturaleza de operaciones semejantes)
+    Las variables deberían declararse tan cerca como sea posible de su utilización (se declaran justo en el momento en que estas vayan a ser utilizadas así reduces el tiempo de vida de la variable y quien lee el codigo sabe el porqué de la existencia de la misma)
+    Pon las cosas en el orden adecuado que todo el mundo espera
+    Se una buena persona; es decir mantén estos pequeños detalles en tu código
+    Los programadores prefieren líneas cortas (~40, máxima 80/120) (si me he marcado el tope de 80 caracteres y este se pasa entonces la partes en dos y asignas una parte de ella a variables temporales que recogen resultados intermedios)
+    Utilizamos el espacio en blanco horizontal para asociar las cosas que están fuertemente relacionadas y disociar las cosas que están más débilmente relacionadas y para acentuar la precedencia de operadores (entre un método y otro pon un espacio en blanco para que entre por los ojos a simple vista dónde termina uno y comienza otro)
+    Hay que sangrar las líneas de código fuente de forma proporcional a su posición en la jerarquía (Hay que identar, tabular las jerarquías del código, el cuerpo del if, los ciclos y todas esas cosas deben estar agradables a la vista para identificarlos de un solo vistazo)
+Violaciones:
+    No uses tabuladores entre los tipos y las variables para una disposición de columnas
+    Nunca rompas las reglas de sangrado por muy pequeñas que sean las líneas (nunca un if con una línea siguiente, si no mete llaves y hazlo bien agradable para la vista, que las personas no esfuerces la vista)
+Máximas:
+    "Conceptos que están estrechamente relacionados deben mantenerse verticalmente cercanos" [Martin, R.]
+    Un equipo de desarrolladores deben ponerse de acuerdo sobre un único estilo de formato y luego todos los miembros de ese equipo deben usar ese estilo.
+    Escribe para el que viene a leer tu código, que lo entienda de una sin esfuerzo. pues a ti mismo te tocará leerlo dentro de unos meses.
+
+2   Comentarios de Código Limpio
+      *  El código tiene que explicarse a sí mismo
+    Justificación:
+        Nada puede ser tan útil como un comentario bien colocado
+    Implicaciones:
+        Código claro y expresivo con algunos pocos comentarios es muy superior al código desordenado y complejo con un montón de comentarios. En muchos casos es simplemente una cuestión de crear una función con el nombre que diga lo mismo que el comentario.
+        Comentario legal. Ej: copyright, license, ...
+        Comentario aclarativo. por ejemplo en expresiones regulares que no se entienden de una Ej:
+            // format matched kk:mm:ss EEE, MMM dd, yyyy
+            String format = "\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*";
+    Violaciones:
+        Nada puede estorbar más encima de un módulo que frívolos comentarios dogmáticos.
+        Es simplemente una tontería tener una regla que dice que cada variable debe tener un comentario o que cada función debe tener un javadoc a no ser que sea publicado como biblioteca
+        Comentarios redundantes. Ej: int dayOfMonth; //the day of the month
+        Comentarios de atribución. Ej: //Added by Luis, para eso está el control de versiones cuando haga realmente falta
+        Comentarios confusos. Si nuestro único recurso es examinar el código en otras partes del sistema para averiguar lo que está pasando
+        Comentarios inexactos. Un programador hace una declaración en sus comentarios que no es lo suficiente precisa para ser exacta
+        Comentarios de sección. Ej: // Actions //////////////////////////////////////
+        Código comentado. Para eso está el control de versiones
+        Comentarios no mantenidos. Con valores que no se actualizarán. Ej: //port is 7077
+        Comentarios excesivos. Como la historia de interesantes discusiones de diseño
+        Nada puede ser tan perjudicial como un enrevesado comentario desactualizado que propaga mentiras y desinformación
+
+    Máximas:
+        "No comentes código malo, reescribelo" [Kernighan & Plaugher]
+3   Nombrado de Código Limpio
+    Sinónimos:
+        Elige nombres descriptivos (Choose Descriptive Names)[Clean Code - Robert Martin]
+        Elige nombres al nivel de abstracción apropiado (Choose Names at the Appropriate Level of Abstraction)[Clean Code - Robert Martin]
+        Usa nomenclatura estándar donde sea posible (Use Standard Nomenclature Where Possible) [Clean Code - Robert Martin]
+        Nombre no ambiguos (Unambiguous Names)[Clean Code - Robert Martin]
+        Usa nombres largo para ámbitos largos (Use Long Names for Long Scopes)[Clean Code - Robert Martin]
+        Evita codificaciones (Avoid Encoding)[Clean Code - Robert Martin]
+        Los nombres debería describir los efectos laterales (Names Should Describe Side-Effects)[Clean Code - Robert Martin]
+    Justificación:
+        Los nombres deben revelar su intención. Deberían revelar por qué existe, qué hace, y cómo se utiliza para facilitar la legibilidad para el desarrollo y el mantenimiento correctivo, perfectivo y adaptativo.
+    Implicaciones:
+        Nombres pronunciables que permitan mantener una conversación (nunca uses nombres que no se puedan pronunciar, por ejemplo TTT en vez de TicTacToe, usa nombres que indiquen un sentido y lógica)
+        Mayúsculas en los cambios de palabra (CamelCase)
+        Nombres de dominio del problema y de la solución. Ej: Student, discard, ..., TicketVisitor, ReaderFactory, ... conocidos por la comunidad de programadores
+        Elige una palabra para un concepto abstracto y aferrarte a él. Ej: get, retrieve, fetch, ... es confuso como métodos equivalentes de diferentes clases. (usa una palabra para un significado y no un abanico de nombres con el mismo significado )
+        Los nombres de paquetes deben ser sustantivos y comenzar en minúsculas. Ej: models.customers
+        Los nombres de clases deben ser sustantivos y comenzar en mayúsculas. Ej: Controller en vez de Control
+        Nombres de métodos deben ser verbos o una frase con verbo y comenzar en minúsculas.
+        Nombres de métodos de acceso deben anteponer get(is para lógicos) / set
+    Violaciones:
+        Si un nombre requiere un comentario, el nombre no revela su intención. Ej: d, mpd, lista1, ... mejor: elapsedTimeInDays, daysSinceModificatio, ...
+        Utilizar separadores de palabras como guiones o subrayados (solo todo en Mayusculas con las constantes)
+        Constantes numéricas que son difíciles de localizar y mantener
+        Nombres de una letra y muy en particular, 'O' y 'l' que se confunden con 0 y 1. Excepcionalmente, en variables locales auxiliares de métodos. Un contador de bucle puede ser nombrado i o j o k (pero nunca l!) si su alcance es muy pequeño y no hay otros nombres que pueden entrar en conflicto con él. Esto se debe a que esos nombres de una sola letra para contadores de bucles son tradicionales. Es un estándar, "allá donde fueres. haz lo que vieres".
+        Nombres acrónimos a no ser que sean internacionales. Ej: BHPS, mejor pones BehaviourHumanPreditacionSystem
+        Nombres con códigos de tipo o información del ámbito. Ej: int iAge mejor pon int age; class CStudent mejor class Student
+        Nombre con palabras vacías o redundantes como Object, Class, Data, ... Ej: StudentData, boardObject, theMessage... mejor Student, board, message, ...
+        Nombre en serie. Ej: player1, player2, ... mejor players o winnerPlayer y looserPlayer
+        Nombres desinformativos que no son lo que dicen. Ej: customerList pero no es una lista, y mañana puede ser un conjunto; ...
+        Nombres indistinguibles como XYZControllerForEfficientHandlingOfStrings
+        Nombres polisémicos en un mismo contexto. Ej: book como registro en un hotel y libro; ...
+        Nombres graciosos, juegos de palabras, ...
+    Máximas:
+        "Una línea de código se escribe una vez y se lee cientos de veces"[Cox] La elección de buenos nombres lleva tiempo, pero ahorra más de lo que toma.
+        Así que ten cuidado con los nombres y cámbialos cuando encuentres otros mejores(para mejor siempre se agradece).
+        Los nombres de atributos, clases, métodos, paquetes y todo tiene que estar en inglés, todo el código tiene que estar en inglés de por vida.
+
+4   Antipatrón "Descomposición Funcional"
+    Sinónimos:
+        Functional Descomposition [Antipatrón de Desarrollo; William H. Brown et all]
+    Síntomas:
+        Clases con nombres de función
+        Clases con un solo método
+        Ausencia de principios orientados a objetos como la herencia, el polimorfismo, ...
+    Justificación:
+        Imposible de comprender el software, de reutilizar, de probar, ...
+    Solución:
+        Aplicar los Patrones Generales para la Asignación de Responsabilidades del Software: GRASP
+
+    * Enfoques de Clasificación
+        Se refiere a clasificar, a hacer clases
+    Categorización clásica:
+        Definición: "Todas las entidades que tienen una determinada propiedad o conjunto de propiedades en común forman una categoría. Estas propiedades son necesarias y suficientes para definir la categoría". [Booch]
+    Agrupación conceptual:
+        Definición: "Las clases se generan mediante la formulación de primeras descripciones conceptuales de estas clases y, a continuación, la clasificación de las entidades de acuerdo con las descripciones" [Stepp; Michalski].
+    Teoría de Prototipos:
+        Definición: "Wittgenstein señaló que una categoría como juego no encaja en el molde clásico, ya que no hay propiedades comunes compartidas por todos los juegos... Aunque no existe una única colección de propiedades que comparten todos los juegos, la categoría juego está unida por lo que Wittgenstein llama parecidos de familia... también observó que no había límite fijo en la categoría juego. La categoría podría extenderse y nuevos tipos de juegos ser introducidos"[Lakov]
+
+Clases de Análisis:
+    Introducción:
+    GRASP [Craig Larman]:
+    *   Principios Generales de Software para Asignación de Responsabilidades:
+        *   General Responsibility Assignment Software Patterns or Principles
+        *   Grasp a su vez significa: conocimiento, entendimiento, comprender y entender.
+    *   Ayudan al aprendizaje de comprender el diseño objeto esencial, y aplicar el razonamiento del diseño de una manera metódica, racional, explicable.
+    *   Este enfoque de comprensión y uso de los principios de diseño se basa en los Patrones de Asignación de Responsabilidades.
+
+    Experto en la Información
+    Problema: Cuál es un principio general de la asignación de responsabilidades a los objetos ?
+    Solución: Asignar la responsabilidad al experto en la información: la clase que tiene la información necesaria para cumplir con la responsabilidad.
+        Ej: si quieres calcular la diferencia entre dos fechas, este método tiene que implementarse en la propia clase fechas y no en otra que tenga que comenzar a usar get y set para modificar una fecha o robarse la información de la misma.
+
+Código Sucio por Clases Grandes
+    Sinónimos: Big Large Object - BLOB, Too much Information, Large Class
+    Justificación:
+        *   Cuando una clase está tratando de hacer demasiado, a menudo aparece con demasiadas variables de instancia. En tal caso, el código duplicado no puede estar muy lejos.
+        *   Los archivos pequeños son generalmente más fáciles de entender qué archivos de gran tamaño.
+    Métrica:
+        *   Parece ser posible construir sistemas significativos con archivos que son típicamente de 200 líneas de largo, con un límite máximo de 500. A pesar de que esto no debería ser una regla dura y rápida, debe considerarse muy deseable.
+        *   3 atributos de media, 5 como máximo
+        *   20 métodos como máximo
+    Solución:
+        *   Descomponer la clase otorgando grupos de atributos relacionados a otras clases
+        *   Si es una clase de interfaz separa los datos y cálculos del dominio en una clase de entidad
+        *   Cuando te llevas algunos atributos a una clase nueva, te llevas todos los metodos que trabajan con ellos y de esta forma la clase grande se parte en dos clases
+
+5   Estrategias de Clasificación
+    5.1 Descripción informal
+        Estrategia: Abbott sugiere escribir una descripción del problema (o una parte de un problema) y luego subraya los sustantivos y verbos. Los nombres representan objetos candidatos, y los verbos representan operaciones candidatos en ellos. El enfoque de Abbott es útil porque es simple y porque obliga a los desarrolladores a trabajar en el vocabulario del espacio del problema.
+        Inconveniente: Sin embargo, de ninguna manera es un enfoque riguroso y si no escala bien para nada más allá de problemas bastante triviales del lenguaje humano. La lista resultante de los objetos y las operaciones depende de la habilidad de la escritura de autor.
+        Nota: Si estás perdido coge el texto que describe tu problema y comienza a subrayar sustantivos y verbos porque esto te será de vital ayuda a la hora de extraer los requisitos.
+
+    5.2 Análisis clásico
+        Estrategia: un número de metodólogos han propuesto diversas fuentes de clases y objetos, derivados de los requisitos del dominio del problema:
+        >fuentes de clases y objetos:
+        *   Cosas, objetos físicos o grupos de objetos que son tangibles: coches, datos de telemetría, sensores de presión ...
+        *   Conceptos, principios o ideas no tangibles: pueden ser utilizados para organizar o realizar un seguimiento de las actividades comerciales y/o comunicaciones: préstamo, reunión, intersección
+        *   Cosas que pasan, por lo general de otra cosa en una fecha determinada, eventos: aterrizaje, interrumpir, solicitud, partido de fútbol
+        *   Gente, seres humanos que llevan a cabo alguna función, usuarios que juegan diferentes roles en la interacción con la aplicación: madre, profesor, político ...
+        *   Organizaciones, colecciones formalmente organizadas de personas y recursos que tienen una misión definida, cuya existencia es en gran medida independiente de los individuos
+        *   Lugares físicos, oficinas y sitios importantes para la aplicación: zonas reservadas para personas o cosas
+        *   Dispositivos con los que interactúa la aplicación
+        *   Otros sistemas de sistemas externos con los que interactúa la aplicación
+        Todo es a conveniencia de lo que necesites
+        Un buen profesional tiene recursos para esquivar problemas o solucionarlos en casos de no poder esquivarlas
+
+    5.3 Análisis del Dominio
+        Estrategia: un intento para identificar los objetos, las operaciones y las relaciones [son los que] los expertos de dominio perciben como importantes sobre el dominio.
+        *   A menudo, un experto de dominio es simplemente un usuario, como un ingeniero del tren o expendedor en un sistema ferroviario, y una enfermera o un médico en un hospital, un periodista, un vendedor online
+        *   Un experto del dominio normalmente no será un desarrollador de software; más comúnmente, él o ella es simplemente una persona que está íntimamente familiarizado con todos los elementos de un problema particular.
+        *   Un experto del dominio habla el vocabulario del dominio.
+        Los desarrolladores de software saben de su tema pero no tienen dominio de temas ajenos a los cuales los usuarios de ese dominio son los más familiarizados y aptos para comentar sobre los mismos.
+
+    5.4 Análisis del Comportamiento
+        Estrategia: Mientras que estos enfoques clásicos se centran en cosas tangibles en el dominio del problema, otra escuela de pensamiento en el análisis orientado a objetos se centra en el comportamiento dinámico como la fuente primaria de clases y objetos.
+        *   En esta estrategia hacen hincapié en las responsabilidades.(los métodos de las clases)
+        *   Deja de mirar las clases por los atributos que tienen nadamas, tienes que mirar también el comportamiento que le queremos poner a cada clase y ahí empezar a orientar objetos con un equilibrio entre datos y operaciones, un reparto de responsabilidades
+        *   La responsabilidad es:  el conocimiento que tiene un objeto que tiene que mantener y las acciones que puedo realizar esa es la responsabilidad de una clase
+        *   Las responsabilidades tienen el propósito de trasmitir un sentido de la finalidad de un objeto y su lugar en el sistema.
+        *   Las responsabilidades de un Objeto son todos los servicios que presta a todos los contratos(se refiere a que otras clases me pidan cosas a través de mi interfaz) que apoya.
+
+        Responsabilidades: las obligaciones de un objeto en términos de su comportamiento.
+        >Existen dos tipos básicos:
+        *   La responsabilidad de hacer de un objeto es: algo en sí mismo, como la creación de un objeto o hacer un cálculo, iniciar acciones en otros objetos y el control y la coordinación de actividades en otros objetos.(estas son las operaciones que tiene que hacer los objetos de esta clase)
+        *   La responsabilidad de conocer de un objeto es: sobre unos datos privados encapsulados, sobre objetos relacionados, y sobre las cosas que pueden obtener o calcular. (esa es la responsabilidad de una clase)
+        Estrategia:
+        Se propone establecer escenarios del uso de la aplicación
+        *   A medida que los miembros del equipo caminan a través del escenario(un caso de uso es un grupo de escenarios), pueden asignar nuevas responsabilidades a una clase existente, agrupar ciertas responsabilidades para formar una nueva clase, o más comúnmente, dividen las responsabilidades de una clase en más de grano fino y distribuyen estas responsabilidades a clases diferentes.
+        *   Se crea una tarjeta para cada clase identificada como relevantes para el escenario. Tarjetas CRC(class-responsability-colaborations). lo que luego se convirtió en el tiempo UML
+
+        Nota: Aplicándolo al TicTacToe por donde va el curso en su evolución a medida que se le aplica lo estudiado hasta el momento:
+        Clases que te salen para el ejercicio de las tres en raya
+        [tictactoe,tablero,jugador,ficha]
+        1. Si son sustantivos (se cumple Abbott)
+        2. Son objetos Tangibles (en el enfoque clásico)
+        3. El experto me hablaría de las clases definidas es su vocabulario(Análisis del Dominio)
+        4. Qué operaciones les ponemos a cada clase (Responsabilidades):
+            tablero: vaciar o iniciar, decir si hay tres en rayas, el manejara objetos de la clase ficha sabiendo donde estan, poner, mover, tiene vacía la casilla ?
+            jugador: pone la ficha colaborando con el tablero, interactúa con el jugador real(le pide las coordenadas a donde mover al usuario del mundo real, las coje y le pregunta al tablero si tiene vacía la casilla, para luego moverla),
+
+    5.5 Análisis de Casos de Uso
+        Estrategia:
+        *   A medida que el equipo se guía a través de cada escenario de cada caso de uso, se deben identificar los objetos que participan en el escenario, las responsabilidades de cada objeto, y las formas en que esos objetos colaboran con otros objetos, en términos de las operaciones que cada uno invoca en el otro. De esta manera, el equipo se ve obligado a elaborar una clara separación de las responsabilidades entre todas las abstracciones.
+        *   No es necesario profundizar en estos escenarios al principio; simplemente podemos enumerarlos. Estos escenarios describen colectivamente las funciones del sistema de la aplicación.
+        *   A medida que continuaba el proceso de desarrollo, estos escenarios iniciales se ampliaron para considerar las condiciones excepcionales así como los comportamientos secundarios del sistema. Los resultados de estos escenarios secundarios introducen nuevas abstracciones para añadir, modificar o reasignar las responsabilidades de las abstracciones existentes.
+
+6   Alta Cohesión
+    Problema: ¿Cómo mantener la complejidad manejable?
+    *   La cohesión, o más específicamente, la cohesión funcional, es una medida de cómo de fuerte están relacionadas y enfocadas las responsabilidades que son de un elemento.
+    *   Un elemento con responsabilidades muy relacionadas y que no hace una enorme cantidad de trabajo, tiene una alta cohesión. Estos elementos incluyen clases, subsistemas y así sucesivamente.
+    *   Una clase con baja cohesión hace muchas cosas no relacionadas o hace demasiado trabajo. Clases de baja cohesión a menudo representan un "grano muy grande" de abstracción ohan asume responsabilidades que deberían haber sido delegadas a otros
+
+    Notas:
+    *   Cohesión: Las clases tienen que tener todo el código, todas las líneas del código tienen que estar estrechamente relacionadas con una responsabilidad que tiene esa clase.(no pueden ser cosas de una índole y luego de otra)
+    *   Son las operaciones lo que dan cohesión a los atributos de la clase y hacen que estén realmente estrechamente relacionados.
+    Solución: Asignar una responsabilidad para que la cohesión siga siendo alta.
+    Discusión:
+        *   Alta cohesión es un principio a tener en cuenta en todas las decisiones de diseño; es un objetivo fundamental para considerar continuamente. Es un principio valorativo que un diseñador aplica al evaluar todas las decisiones de diseño.
+        *   El patrón de alta cohesión como muchas cosas en la tecnología de objetos tiene una analogía del mundo real. Es una observación común que si una persona toma demasiadas responsabilidades no relacionadas, en especial las que adecuadamente se deben delegar a otros, entonces la persona no es eficaz.
+    Nota: Siempre tratar de no tener clases que no tengan alta Cohesión.
+    Beneficios:
+        *   Se aumenta la claridad y facilidad de comprensión del diseño
+        *   Se simplifican mantenimiento y mejoras
+        *   Alta Cohesión es a menudo compatible con Bajo Acoplamiento
+        *   Soporta una mayor reutilización porque una clase cohesiva se puede utilizar para un propósito muy específico.
+
+7   Bajo Acoplamiento
+    Problema: ¿Cómo apoyar el bajo acoplamiento, el bajo impacto del cambio y el aumento de la reutilización ?
+    *   El acoplamiento es un grado de dependencia con otros módulos, de una clase con otras clases.
+    *   El acoplamiento es una medida de la fuerza con que un elemento está conectado a otros elementos.
+    Solución: Asignar responsabilidades de tal manera que el acoplamiento siga siendo bajo.
+    Discusión:
+        Se recomiendo estar con bajo acoplamiento, de 3 a 5 dependencias
+        El Bajo Acoplamiento alienta la asignación de una responsabilidad de forma que su colocación no aumente el acoplamiento a un nivel tal que conduce a los resultados negativos que el alto acoplamiento puede producir.
+        Un grado moderado de acoplamiento entre clases es normal y necesario para la creación de un sistema orientado a objetos en las tareas se cumplen por una colaboración entre los objetos conectados.
+        El acoplamiento per se no es el problema; es el acoplamiento a elementos que son inestables en alguna manera; por ejemplo un gran acoplamiento con clases que no paren de cambiar, eso me repercute en mi clase. Si reduces la cantidad de clases a las que dependes la probabilidad de cambios disminuyen
+
+    Formas de acoplamiento directo de un Tipo X a un Tipo Y incluyen:
+        *   Tipo X tiene un atributo que hace referencia a una instancia Tipo Y.
+        *   Tipo X tiene un método que hace referencia a una instancia de Tipo Y, por cualquier medio. Estos suelen incluir un parámetro o variable local de Tipo Y, o el objeto de retorno de un mensaje es un instancia de Tipo Y.
+        *   Un objeto Tipo X de los servicios de un objeto de Tipo Y.
+        *   Tipo X es una clase derivada directa o indirecta de Tipo Y.
+        *   Acoplamiento indirecto, cuando consumes un método de otra clase.
+        *   Cuando tengo una clase que tiene objetos de otra clase
+
+    Contraindicaciones:
+        Alto Acoplamiento a elementos estables y generalizados rara vez es un problema. Por ejemplo, una aplicación de Java de forma segura se puede acoplar a las bibliotecas de Java (java.util y así sucesivamente), porque son estables y generalizadas.
+
+    Beneficios:
+        No se ve afectado por los cambios en otros componentes
+        Fácil de entender de manera aislada
+        Conveniente para reutilizar
+
+    Ejemplo en el TicTacToe por donde vamos: Tienen Alta Cohesión y Bajo Acoplamiento ??
+    *   Alta Cohesión si tienen:
+        el tablero de ocupa de las fichas y todo lo que tiene que ver con las fichas,
+        el jugador se responsabiliza de interactuar con el usuario y colaborar con el tablero para obedecer sus órdenes
+        el juego es el director de orquesta que une el tablero con los dos jugadores
+    *   No hay Alto Acoplamiento porque solo tengo 4 clases, hay que tener 20 clases para empezar a tener alto acoplamiento
+        el jugador colabora con el tablero pero no conoce la clase juego(tictactoe) lo cual es un acoplamiento menor
+        el tablero solo conoce las fichas
+        las fichas no conocen a nadie
+        >> quedando al final un buen bajo acoplamiento
+
+8   Invención Pura
+    Cuando estas metiendo todo lo aprendido y sientes que algo no te encaja entonces
+    Problema: Hay muchas situaciones en las que la asignación de responsabilidades solamente a las clases de software de la capa de dominio da lugar a problemas en cuanto a la escasa cohesión, elevado acoplamiento o de bajo potencial de reutilización, cuando con lo que hemos visto no te sirve y no se cumpe lo que se tiene que cumplir, entonces a inventar una clase que te resuelva ese problema.
+        Si tienes una clase A que se relaciones con 20, pues inventate una clase Z que se relacione con 5 de esas 20, de esta forma la clase A solo se relaciona con 15 + la clase Z lo cual sería un total de 16.
+    Solución: Asignar un conjunto altamente cohesivo de responsabilidades a una clase artificial o de conveniencia que no representa un concepto (algo dominio del problema), para apoyar alta cohesión, bajo acoplamiento y reutilización
+
+    Código Sucio por Librería Incompleta:
+    *   Sinónimos:
+        > Incomplete Library Class [Smell Code (Refactoring) - Martin Fowler]
+    *   Justificación:
+        > Los desarrolladores de clases de biblioteca son raramente omniscientes. No los culpamos por eso, después de todo, rara vez podemos imaginar un diseño hasta su mayoría que hemos construido, así que los desarrolladores de la biblioteca tienen un trabajo muy duro.
+        > El problema es que a menudo es de mala educación, y por lo general imposible, modificar una clase de biblioteca para algo que te gustaría que hiciera.
+    *   Solución:
+        > Crea una clase con los métodos extra adecuados a tus necesidades
+        > Cuando estés usando librerías planteate inventarte una clase que recubra esa librería
+
+    En el juego del TicTacToe no inventamos entonces la clase IO para cubrir todo lo relacionado con la lectura y escritura en la consola e interactúa con el usuario, recubriendo así las librerías de BufferReader.
+    Están las clases del dominio y las clases de la solución.
+
+9   Clases Perezosas
+    En el ejemplo la clase Token solo tienes la variable char y un método get para tomar su valor, lo cual la vuelve una clase inutil y perezosa
+    La clase Token no tiene ninguna responsabilidad por ello se elimina.
+    Cuando miro el mundo real saco clases, pero no todas valen, solo valen: que no estén muy acopladas, tengan alta cohesión y que no sean perezosas.
+
+10  Cambios Divergentes (Clases Divergente)
+    Sinónimos:
+        Divergent Change [Smell Code (Refactoring); Marting Fowler]
+    Justificación:
+        Ocurre cuando una clase se cambia frecuentemente de diferentes maneras, por diferentes razones. Si nos fijamos en una clase y dices: "Bueno, voy a tener que cambiar estos tres métodos cada vez que tengo una nueva base de datos, o cada vez que haya un nuevo instrumento financiero..."
+    Solución:
+        Es probable que tenga una situación en la que varios objetos son mejor que uno. De esta manera cada objeto sólo se cambia como resultado de un tipo de cambio.
+        Estructuramos nuestro software para hacer el cambio más fácil después de todo, el software está destinado a ser blando.
+        Una clase solo se tiene que ocupar de una sola cosa.
+        Puede haber soluciones donde varios objetos sean mejor que uno, esto logra que puedes modificar una cosa de una sin alterar la otra
+
+11  Obsesión por Tipos Primitivos
+    En dependencia del dominio del problema se usará tipo primitivo o objeto. Ej: En una aplicación de correo postal la dirección no debería ser un simple string por su importancia, tampoco el código postal un integer pues del código postal se sacan: el país, la provincia y demás.
+
+12  Principio del Menor Compromiso y la Menor Sorpresa:
+    Sinónimos:
+        Los nombres de las funciones deberían decir lo que hacen (Function Names Should Say What They Do)[Clean Code (Smell Code) - Robert Martin]
+    Principio del menor compromiso, a través del cual la interface de un objeto proporciona su comportamiento esencial, u nada nuevo [Abelson u Sussman]
+
+13  Principio de la menor sorpresa:
+    A través del cual una abstracción captura todo el comportamiento de un objeto, ni mas ni menos, no ofrece sorpresas o efectos secundarios que van más allá del ámbito de la abstracción [Booch]
+    Cada vez que pones un método que no hace lo que dice su nombre o hace algo más de lo que dice, entonces ese método está mal o el nombre está mal
+
+14  Cohesión de Métodos:
+    Sinónimos:
+        Las funciones deberían hacer una sola cosa (Functions Should Do One Thing)[Smell Code (Refactoring); Marint Fowler]
+    Justificación:
+        A menudo se intenta crear funciones que tienen múltiples secciones que realizan una serie de operaciones. Dicho de otra manera, la relación entre las líneas de la implementación del método no son cohesivas porque persiguen distintos objetivos.
+        Producen un acoplamiento temporal e imposibilitan su reusabilidad.
+            Ej: Método que calcula la longitud de un intervalo y muestra el resultado por pantalla, Cuando solo se necesita el cálculo, no es reutilizable.
+        Si necesitas un if para hacer las cosas entonces ese método no hace una sola cosa y no es bueno.
+    Solución:
+        Debería ser convertida en varias funciones pequeñas que hagan una sola cosa en específico.
+
+15  Código Muerto:
+    Es código que está escrito pero que no se usa desde ningún lado, está por estar. Mete ruido cuando alguien llega nuevo al proyecto y llena mas codigo en el proyecto para joder.
+    Solución: Eliminarlo
+
+16  La Interfaz de una clase tiene que ser Suficiente, Completa y Primitiva:
+    Por suficiente, queremos decir que la clase o módulo, captura suficientes características de la abstracción para permitir una interacción significativa y eficiente. Hacer otra cosa hace que el componente sea inútil. Tiene que tener lo suficiente y necesario para resolver su tema.
+        Ej: Una clase conjunto de elementos, si ofrece eliminar un elemento deberá contemplar añadir un elemento.
+    Por primitiva es cuando el cliente combinándola puede obtener todo lo que quiera. Es que las operaciones que tu brindis en tu interfaz sean un juego de operaciones suficientes para hacer todo lo que quieran los clientes, que combinandolas oportunamente los clientes puedan hacer lo que quieran.
+        Ej: En la pila tenemos apilar un elemento y desapilar un elemento, que son elementos primitivos. Si viene un cliente que quiere apilar solo 3 elementos y otro que quiere apilar solo 8 entonces que lo hagan en su implementación aparte pero sin tocar la interfaz, la interfaz tiene que ser una primitiva
+                porque si le empiezo a otorgar nuevas operaciones particulares de clientes convertir la clase enormemente compleja.
+
+17  YAGNI: Principio "No vas a necesitarlo"
+    No escribas nada que no vayas a necesitar, no seas futurista.
+    No se debe agregar funcionalidades hasta que se considere estrictamente necesario.
+    TDD se apoya en YAGNI no se escribe ni una sola línea que no haga falta
+
+18  DRY (Don't Repeat Yourself)
+    Principio "No te Repitas" hazlo una sola vez.
+
+    Código Maloliente por Grupo de Datos
+    Ej: Row y column presente en muchos sitios de Board.
+    Código Maloliente por Listas de Parámetros Largas
+    Ej: los métodos suelen tener de 1 a 2 parámetros, si necesitas más es porque hay un problema de relaciones entre clases, no están establecidas las relaciones de asociación oportunas y por eso hay tantos parámetros.
+
+19  KISS
+    Principio: "Mantenlo sencillo, estúpido", por encima de todo el código tiene que ser sencillo.
+    *   Un Método tiene que tener como mucho de 10 a 15 líneas.
+
+Reparto de Responsabilidades (Video #7 de la lista)
+
+20  Tratamiento de Errores:
+    Las Excepciones son para tratamientos de errores de cosas excepcionales que se salen de los límites del software que estás creando, ejemplo trabajar con la base de datos, comunicaciones, ficheros, para las cosas de fuera del software.
+    Apostamos por Assert para precondiciones en diversos métodos.
+    Ej:
+        private Color getColor(Coordinate coordinate){
+            assert coordinate != null;
+            ... sentencias ...
+        }
+        assert coordinate != null; el assert confirma que una condición sea cierta, en caso de no serlo rompe la ejecución del programa
+            esto son los fundamentos de lo que se llama diseño por contrato
+            - es como un contrato, yo me comprometo a conseguir el color pero tu me llamas con una coordenada que no sea null no quiero tonterias. (es la precondición)
+        para que se ejecuten, esto solo se usa en desarrollo; se configura en la opción del IDE: Debug Configuration  en la parte de Arguments - en VM arguments se escribe -ea (quiere decir enable los assert)
+        -   las postcondiciones se han ido a pruebas
+    Aserciones: es una expresión involucrada en algunas entidades del software y establece una propiedad que estas entidades deben satisfacer en ciertos estados de la ejecución del programa
+        Es una sentencia del lenguaje que permite comprobar las suposiciones del estado del programa en ejecución.
+        Cada aserción contiene una expresión lógica que se supone cierta cuando se ejecute la sentencia. En caso contrario, el sistema finaliza la ejecución del programa y avisa del error detectado.
+        Si yo te llamo bien estoy obligado a contestarte bien
+
+21  Código Sucio por Cirugía a Escopetazos
+    Justificación:
+    *   Cuando cada vez que se hace una especie de cambio, lo que se tiene que hacer es un montón de pequeños cambios en un montón de clases diferentes. Cuando los cambios son por todos lados, son difíciles de encontrar y es fácil pasar por alto un cambio importante,
+    *   Un cambio que altera muchas clases. Idealmente, existe una relación de uno a uno entre los cambios comunes y las clases.
+    Solución:
+    *   En este caso, hay que mover las responsabilidades entre las clases para evitarlo. Si no hay una clase actual que parezca una buena candidata entonces crea una.
+    *   Nunca uses números mágicos, declara una variable nominal y así el día que cambie dicho valor solo actualizas el valor en dicha variable.
+        Ej: NUM_PLAYERS
+    *   Gracias a la descomposición ahora podemos hacer pruebas unitarias y varias clases se vuelven reutilizables.
+
+22  Inapropiada Intimidad:
+    Es cuando hay ciclos de dependencias entre clases, lo cual aumenta la complejidad y todo se pone de asco, y complica las pruebas
+    Antes se llamaba ciclos de relaciones ahora se llama Inapropiada Intimidad
+    Los ciclos hay que romperlos, excepto cuando la solución es más compleja y más dificl de probar, lo cual no nos deja ninguna ventaja
+
+    En el ejemplo de TicTacToe:
+    Inapropiada Intimidad
+    *   Existe una relación bidireccional entre las clases TicTacToe y (Turn, Player, Board) por la constante NUM_PLAYERS
+    *   Existe una relación bidireccional entre las clases Board y Coordinate por la constante DIMENSION
+
+    Solución:
+    *   Romper relación bidireccional entre las clases Board y Coordinate:
+        > Paso la constante DIMENSION para la clase Coordinate qué y la clase Board sigue dependiendo de la clase Coordinate, pero rompo el ciclo. (pues Coordinate no dependerá más de Board)
+    *   Romper relación bidireccional entre las clases TicTacToe y (Turn, Player, Board):
+        > en vez de dar acceso a mi constante, te doy el valor directo de la constante. que serán 2 jugadores.
+
+23  Relaciones entre Clases:
+    *   Tipos de Relaciones entre Clases
+        > Colaboración entre Objetos: si un objeto envía mensajes a otro
+        > Relación entre Clases:
+            - si dos objetos de sus respectivas clases colaboran. Tipos de relación:
+                + Relación de Composición/Agregación
+                + Relación de Asociación
+                + Relación de Dependencia (Relación de uso)
+            - si una clase transmite a otra todos sus miembros para organizar una jerarquía de clasificación, sin negar ni obligar a la colaboración entre objetos de las clases participantes. Tipos de relación:
+                + Relación de Herencia
+        > Dependencia es la nueva forma de referirse a una relación entre clases:
+            - La clase del objeto que envía mensajes al objeto de la otra clase, con ésta última.
+            - La clase hija en una relación de herencia con la clase padre.
+
+    *   Características de las Relaciones entre Clases por Colaboración
+        > Visibilidad: carácter privado o público de la colaboración entre dos objetos.
+        > Temporalidad: mayor o menor duración de la colaboración entre dos objetos.
+        > Versatilidad: intercambiabilidad de los objetos en la colaboración con otro objeto.
+
+    *   Relación de Composición / Agregación: es la relación que se constituye entre el todo y la parte. Se puede determinar que existe una relación de composición entre la clase A, el todo, y la clase B, la parte, si un objeto de la clase A "tiene un" objeto de la clase B. Las relaciones de composición no abarca simplemente cuestiones físicas(libro -todo- y páginas -parte-) sino, también a relaciones lógicas que respondan adecuadamente al todo y a la parte como "contiene un" (aparato digestivo -todo- y bolo alimenticio -parte-), "posee un"(propietario -todo- y propiedades -parte-), etc.
+        >   Las características de la relación de composición/ agregación son:
+            - visibilidad privada y pública respectivamente
+            - temporalidad no momentánea (duradera, pues vive mientras vive el todo en agregación no muere con el todo)
+            - versatilidad es frecuentemente reducida
+
+    *   Relación de Asociación: es la relación que perdura entre un cliente y un servidor determinado. Existe una relación de asociación entre la clase A, el cliente y la clase B, el servidor, si un objeto de la clase A disfruta de los servicios de un objeto determinado de la clase B (mensajes lanzados) para llevar a cabo la responsabilidad del objeto clase A en diversos momentos creándose una dependencia del objeto servidor.
+        > La relación de asociación no abarca simplemente cuestiones tangibles (procesador -cliente- y memoria -servidor-) sino, también a cuestiones lógicas que respondan adecuadamente al servidor determinado como "provecho" (socio -cliente- y banca -servidor-), "beneficio"(empresa -cliente- y banca -servidor-), etc.
+        > Las características de la reacción de asociación son:
+            * visibilidad pública
+            * temporalidad no momentánea
+            * versatilidad reducida
+
+    *   Relación de Dependencia (Relación de Uso): Es la relación que se establece momentáneamente entre un cliente y cualquier servidor. Existe una relación de uso entre la clase A, el cliente, y la clase B, el servidor, si un objeto de la clase A disfruta de los servicios de un objeto de la clase B (mensajes lanzados) para llevar a cabo la responsabilidad del objeto de la clase A en un momento dado sin dependencias futuras.
+        > La relación de uso no abarca simplemente cuestiones tangibles (ciudadano -cliente- y autobús -servidor-) sino, también a cuestiones lógicas que respondan adecuadamente al cliente y al servidor momentáneo cualquiera que sea como "goce" (espectador -cliente- y actor -servidor-), "beneficio"( viajante -cliente- y motel -servidor-)
+        > Las características de las relación de dependencia (uso) son:
+            * visibilidad pública o privada
+            * temporalidad momentánea
+            * versatilidad alta
+    minuto 20 del video #8 tiene una gráfica explicativa de las relaciones.
+
+    *   Comparativa de las Relaciones entre Clases por Colaboración:
+        Sin duda, falta mencionar el factor más determinante a la hora de decidir la relación entre las clases: el contexto en el que se desenvuelven los objetos. Este determinará de forma "categórica" que grados de visibilidad, temporalidad y versatilidad se producen en su colaboración.
+        "La decisión de utilizar una agregación es discutible y suele ser arbitraria. Con frecuencia, no resulta evidente que una asociación deba ser modelada en forma de agregación(son muy difusas), En gran parte, este tipo de incertidumbre es típico del modelado(del diseño); este requiere un juicio bien formado y hay pocas reglas inamovibles. La experiencia demuestra que si uno piensa cuidadosamente e intenta ser congruente la distinción imprecisa entre asociación y agregación no da lugar a problemas en la práctica." [Rumbaugh, 91]
+        "Una agregación es como una asociación pero que es como parte de mi y una asociación es como una agregación pero que no es tuya sino de más gentes"
+    El Objetivo principal de establecer relaciones entre clases es:
+        > Analizar/diseñar la forma en que colaboran los objetos para llevar a cabo los requisitos del sistema, siendo secundario, e imposible, determinar a qué relación responden exactamente en todas las ocasiones;
+        > Analizar/diseñar entre qué clases no existe relación.
+    Al igual que no existe una fórmula para determinar cuál es la relación dada en una colaboración entre objetos, no existen fórmulas para traducir la relación escogida a un código en particular.
+
+    ¿Cómo colabora un objeto this ? -> this le puede mandar mensajes a objetos que sean parámetros de algún método, atributos de la clase, o local. Entonces las distintas relaciones tengo que reducirlas a ese entorno:
+        Las relaciones de uso públicas, si era pública la relación de uso entonces se pasa por parámetro.
+        Las relaciones de uso privadas, son objetos locales al método porque existe durante la ejecución del método cuando se acabe la operación ésta desaparece.
+        La relación de uso de por vida es por atributo haciendo referencia al objeto como puntero al mismo
+    En la composición el que suele hacer el new suele ser la propia clase; lo crea, lo cuelga de su atributo lo tiene ella y no se lo da a más nadie.
+    En la asociación es alguien de afuera de la clase el que a través de un constructor o método me dan al objeto que me tengo que asociar, entonces el new lo hace otra clase por lo cual ese objeto que me pasan es público porque ya alguien lo ha creado.
+
+    Nota: Entonces cuando hagais un Análisis:
+        1. Establecen que clases consideramos relevantes del modelo del dominio(sustantivos y verbos)
+        2. Categorización clásica(la lista de eventos, lugar y personas)
+        3. Hablando con el experto del dominio
+        4. Otorgando responsabilidades a las clases
+        5. Establece las relaciones de las clases
+
+    *   Pautas de traducción de la Relación entre Clases a la Implementación:
+        > La relación de composición: la clase "todo" crea un objeto de la clase "parte" que mantiene como una referencia atributo
+        > La relación de agregación: la clase "todo" mantiene una referencia atributo a un objeto de la clase "parte" que se suministra desde un constructor o método para añadir el agregado
+        > La relación de asociación: la clase "cliente" mantiene una referencia atributo a un objeto de la clase "servidor" que se suministra desde el constructor o método para establecer la asociación
+        > La relación de dependencia/uso: la clase "cliente" contempla como parámetro o valor devuelto de un método un objeto de la clase "servidor" si la colaboración es pública; mientras que contempla el objeto local de un método si la colaboración es privada.
+
+    #Sacando las Relaciones del ejemplo del tic tac toe:
+     >   ¿Qué relación hay entre TicTacToe y Turno ?
+        - es privado o pública? > el objeto turno que tiene un estado, es un turno que puede manejar otros a la vez ?? No, entonces es privado
+        - es composición: como se traduce la composición ? con un atributo y le hago el new.
+          en código queda así:
+             private Turn turn;
+             //luego en el constructor de tictactoe le haces el new para inicializarlo
+             turn = new Turn(parámetros);
+
+     >   ¿Qué relación hay entre TicTacToe y Player ? -> relación de composición
+     >   ¿Qué relación hay entre TicTacToe y Board ? -> relación de composición
+     >   ¿Qué relación hay entre Board y Coordinate ? -> relación de composición  (un tablero se compone de coordenadas)
+     >   Que relación hay entre Player y Coordinate ? -> relación de uso
+     >   ¿Qué relación hay entre Player y Board ? -> relación de asociación (a lo largo del partido usaras este tablero, pero no es tuyo, es público)
+           La asociación en código se traduce con un atributo pero el new lo hace otro aquí el new lo hace el tic tac toe y lo pone en asociación.
+           Ej de Asociación: estas asociados a tu jefe inmediato, a quien acudir por problemas o necesidades.
+
+  * Con unas buenas relaciones de asociación se adelgaza el código
+    >   ¿Qué relación hay entre Turn y Player ? -> relación de asociación
+    Este punto es ultra importante, tienes que estudiar y practicar mucho para poder subir el escalón y no ser más del montón.
+
+24  Reusabilidad por Herencia
+    * Relación de Herencia: es la transmisión de la vista pública(métodos públicos) y de la vista privada(atributos, métodos privados y definición de los métodos) de una clase a otra.
+        La herencia es para abajo !!!
+        Es como un copy-paste dinámico, lo cual es muy bueno porque no me da problema de mantenimiento, lo que le cambia a él me cambia a mi.
+    * Reglas de Construcción de la Relación de Herencia:
+        > ISA (acrónimo de ... is a ... ? - ... es un ... ?): responder afirmativamente a la pregunta de. <un elemento del dominio del nodo hijo> es un <elemento del dominio del nodo padre>?
+        > Generalización/Especialización es la presencia de unas características específicas de un subconjunto de elementos de un determinado conjunto como, para que si bien mantienen las características esenciales e identificativas del conjunto al que pertenecen, también son lo suficientemente relevantes como para ser rasgos distintivos de dicho subconjunto de elementos.
+            Esto quiere decir que cuando hagas herencias tienes que confirmar que la idea de arriba(padre) es general y la de abajo(hija) es una especialización de la de arriba.
+        Ejemplo: un cerdo es un mamífero
+
+25  Principio de Sustitución de Liskov
+    *   El Principio de Sustitución de Liskov dice que las funciones que usan punteros o referencias a una clase base deben ser capaz de usar los objetos de las clases derivadas sin conocerlas.
+        Ej: Si tu tienes un puntero con la dirección a un objeto declarado de una clase base de una jerarquía, yo tengo que manejar ese puntero sin saber que hay debajo, por ejemplo: tengo un puntero a la clase persona tengo que manejarla sin saber si debajo hay hombres o mujeres, tengo que hablar a nivel de persona
+
+    *   El Principio de Sustitución de Liskov dice que se cumple cuando se redefine un método en una derivada reemplazando su precondición por una más débil y su postcondición por una más fuerte.
+        > La precondición de un subtipo es creada combinando con el operador OR las precondiciones del tipo base y del subtipo, lo que resulta una pre condición menos restrictiva.
+        > La postcondición de un subtipo es creada combinando con un operador AND las postcondiciones del tipo base y del subtipo que resulta una post condición más restrictiva.
+        Ejemplo: Una clase padre en un método devuelve números entre 1 y 10 si todas las clases derivadas en este método devuelve números entre 1 y 10 no existe ningún problema para los clientes, \
+                    una subclase me devuelve entonces solo entre 2 y 5 todo se mantiene bien
+                    Pero si una subclase no pone la devolución más restrictiva, y devuelve entre 0 y 100 entonces le revienta al cliente en la cara porque solo estaba preparado para recibir entre 1 y 10 que es como se implementó en el padre.
+                    si esta clase solo recibe números de 1 a 10, y le metes de 2 a 7 la revientas, pero si le metes de 1 a 1000 todo bien.
+                los parámetros de entrada pueden ser igual o mas relajados pero los de salida tienen que ser igual o más restrictivos.
+        > Tu código no puede saber que clases derivadas hay de la clase base a la cual está apuntando el puntero.
+        Se fomenta la composición sobre la herencia y se deja la herencia para cosas sencillas, pequeñas o herencias de interfaces que no dan problemas.
+    Si la herencia que creas no cumple el principio de Liskov entonces vete a la composición.
+    Nunca se debe usar instanceof en el código, el profe Luis dice que terminantemente NUNCA.
+
+26  Colisión de nombres:
+    Para evitar colisiones de nombres se usan los paquetes.
+    Ejemplo: para crear un atributo coordinate que está en otro paquete entonces llamó la clase con toda la ruta, y así logró tener una clase Coordinate en la lógica del dominio y otra como una utilidad, ambas con el mismo nombre
+        private tictactoe.utils.Coordinate coordinate;
+
+27  Controlador por Casos de Uso:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
